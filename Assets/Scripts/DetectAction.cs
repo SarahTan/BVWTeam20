@@ -18,10 +18,11 @@ public class DetectAction : MonoBehaviour {
 	float transitionTime = 5f;
 
 	int raiseDuration = 25;
-	float heightThreshold = 2f;
+	float initHeight;
+	float heightThreshold = 3f;
 
-	float shakeThreshold = 200f;
-	int shakeTarget = 10;
+	float shakeThreshold = 150f;
+	int shakeTarget = 5;
 	int shakeCount = 0;
 
 
@@ -32,6 +33,11 @@ public class DetectAction : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (PSMoveInput.IsConnected && PSMoveInput.MoveControllers[0].Connected && !transitioning) {
+			if (initHeight == null) {
+				initHeight = moveData.Position.y;
+			}
+			Debug.Log (initHeight);
+
 			if (inTheAir) {
 				DetectShakeAction ();
 			} else {
@@ -41,18 +47,18 @@ public class DetectAction : MonoBehaviour {
 	}
 
 	void DetectRaiseAction () {
-		dandPos.Add (dandelion.transform.position);
+		//dandPos.Add (dandelion.transform.position);
 
-		if (dandPos.Count > raiseDuration) {
-			float heightDiff = dandelion.transform.position.y - dandPos[0].y;
+		//if (dandPos.Count > raiseDuration) {
+			float heightDiff = dandelion.transform.position.y - initHeight;
 
 			// Check if moving upwards and pointing upwards 
-			if (heightDiff > heightThreshold && flower.transform.position.y + 2 > stalk.transform.position.y) {
+			if (heightDiff > heightThreshold && flower.transform.position.y + 2.5 > stalk.transform.position.y) {
 				Debug.Log ("Raise detected");
 
 				transitioning = true;
-				PSMoveInput.MoveControllers[0].SetRumble(10);
-				Invoke("RemoveRumble", 2f);
+				PSMoveInput.MoveControllers[0].SetRumble(5);
+				Invoke("RemoveRumble", 1f);
 				Invoke("FinishTransition", transitionTime);
 				dandPos.Clear();
 				
@@ -60,10 +66,10 @@ public class DetectAction : MonoBehaviour {
 				if (actionDelegate != null) {
 					actionDelegate(ACTION.RAISE);
 				}
-			} else {
-				dandPos.RemoveAt(0);
+		//	} else {
+		//		dandPos.RemoveAt(0);
 			}
-		}
+		//}
 	}
 
 	void DetectShakeAction () {
@@ -76,8 +82,8 @@ public class DetectAction : MonoBehaviour {
 				Debug.Log ("Shake detected");
 				
 				transitioning = true;
-				PSMoveInput.MoveControllers[0].SetRumble(19);
-				Invoke("RemoveRumble", 2f);
+				PSMoveInput.MoveControllers[0].SetRumble(10);
+				Invoke("RemoveRumble", 1f);
 				Invoke ("FinishTransition", transitionTime);
 				shakeCount = 0;
 

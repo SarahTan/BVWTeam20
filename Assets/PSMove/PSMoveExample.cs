@@ -49,11 +49,11 @@ public class PSMoveExample : MonoBehaviour {
 				handle.transform.localRotation = Quaternion.Euler(moveData.Orientation);
 			}
 			else {
-				//gemPos.z = -gemPos.z + zOffset;
-				//handlePos.z = -handlePos.z + zOffset;
+				gemPos.z = -gemPos.z + zOffset;
+				handlePos.z = -handlePos.z + zOffset;
 
-				gemPos.z = zPlane;
-				handlePos.z = zPlane;
+				//gemPos.z = zPlane;
+				//handlePos.z = zPlane;
 
 				gem.transform.localPosition = gemPos;
 				handle.transform.localPosition = handlePos;
