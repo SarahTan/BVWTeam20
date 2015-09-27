@@ -14,7 +14,7 @@ public class PSMoveExample : MonoBehaviour {
 	
 	public float zOffset = 5;
 	Quaternion temp = new Quaternion(0,0,0,0);
-	float zPlane = 7f;
+	float zPlane;
 	
 	#region GUI Variables
 	string cameraStr = "Camera Switch On";
@@ -22,38 +22,46 @@ public class PSMoveExample : MonoBehaviour {
 	string rumbleStr = "0";
 	#endregion
 	
-	
+	float initHeight = 0f;
 	
 	// Use this for initialization
 	void Start () {
-		zPlane = OVRPlayer.transform.position.z;
+		zPlane = handle.transform.localPosition.z + 0.5f;
 	}
 		
 	
 	void Update() {
-	
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 	
 		if(PSMoveInput.IsConnected && PSMoveInput.MoveControllers[0].Connected) {
-		
 			Vector3 gemPos, handlePos;
 			MoveData moveData = PSMoveInput.MoveControllers[0].Data;
+
+			if (initHeight == 0) {
+				initHeight = moveData.HandlePosition.y;
+				Debug.Log(initHeight);
+			}
 			gemPos = moveData.Position;
 			handlePos = moveData.HandlePosition;
+
 			if(isMirror) {
 				gem.transform.localPosition = gemPos;
 				handle.transform.localPosition = handlePos;
 				handle.transform.localRotation = Quaternion.Euler(moveData.Orientation);
 			}
 			else {
-				//gemPos.z = -gemPos.z + zOffset;
-				//handlePos.z = -handlePos.z + zOffset;
 
+				// TODO: limit height to 1
 				gemPos.z = zPlane;
+				gemPos.y = (moveData.Position.y - initHeight)/4;
+				gemPos.x = moveData.Position.x/5;
+
 				handlePos.z = zPlane;
+				handlePos.y = (moveData.HandlePosition.y - initHeight)/4;
+				handlePos.x = moveData.HandlePosition.x/5;
 
 				gem.transform.localPosition = gemPos;
 				handle.transform.localPosition = handlePos;
