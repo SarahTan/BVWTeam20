@@ -14,7 +14,7 @@ public class PSMoveExample : MonoBehaviour {
 	
 	public float zOffset = 20;
 	Quaternion temp = new Quaternion(0,0,0,0);
-	
+	float zPlane = 7f;
 	
 	#region GUI Variables
 	string cameraStr = "Camera Switch On";
@@ -49,8 +49,12 @@ public class PSMoveExample : MonoBehaviour {
 				handle.transform.localRotation = Quaternion.Euler(moveData.Orientation);
 			}
 			else {
-				gemPos.z = -gemPos.z + zOffset;
-				handlePos.z = -handlePos.z + zOffset;
+				//gemPos.z = -gemPos.z + zOffset;
+				//handlePos.z = -handlePos.z + zOffset;
+
+				gemPos.z = zPlane;
+				handlePos.z = zPlane;
+
 				gem.transform.localPosition = gemPos;
 				handle.transform.localPosition = handlePos;
 				handle.transform.localRotation = Quaternion.LookRotation(gemPos - handlePos);
