@@ -4,7 +4,7 @@ using System;
 
 public class PSMoveExample : MonoBehaviour {
 	
-	
+	public GameObject OVRPlayer;
 	public string ipAddress = "128.2.237.66";
 	public string port = "7899";
 		
@@ -12,7 +12,7 @@ public class PSMoveExample : MonoBehaviour {
 	
 	public bool isMirror = true;
 	
-	public float zOffset = 20;
+	public float zOffset = 5;
 	Quaternion temp = new Quaternion(0,0,0,0);
 	float zPlane = 7f;
 	
@@ -26,7 +26,7 @@ public class PSMoveExample : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		zPlane = OVRPlayer.transform.position.z;
 	}
 		
 	
@@ -49,11 +49,11 @@ public class PSMoveExample : MonoBehaviour {
 				handle.transform.localRotation = Quaternion.Euler(moveData.Orientation);
 			}
 			else {
-				gemPos.z = -gemPos.z + zOffset;
-				handlePos.z = -handlePos.z + zOffset;
+				//gemPos.z = -gemPos.z + zOffset;
+				//handlePos.z = -handlePos.z + zOffset;
 
-				//gemPos.z = zPlane;
-				//handlePos.z = zPlane;
+				gemPos.z = zPlane;
+				handlePos.z = zPlane;
 
 				gem.transform.localPosition = gemPos;
 				handle.transform.localPosition = handlePos;

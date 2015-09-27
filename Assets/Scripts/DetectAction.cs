@@ -36,7 +36,7 @@ public class DetectAction : MonoBehaviour {
 			if (initHeight == null) {
 				initHeight = moveData.Position.y;
 			}
-			Debug.Log (initHeight);
+			//Debug.Log (initHeight);
 
 			if (inTheAir) {
 				DetectShakeAction ();
