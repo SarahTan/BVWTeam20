@@ -10,18 +10,16 @@ public class DetectAction : MonoBehaviour {
 	ActionDelegate actionDelegate;
 
 	public GameObject dandelion, stalk, flower;
-	List<Vector3> dandPos = new List<Vector3>();
 	MoveData moveData;
 
 	bool inTheAir = false;
 	bool transitioning = false; // flag for rising up/landing motion
 	float transitionTime = 5f;
 
-	int raiseDuration = 25;
-	float initHeight;
-	float heightThreshold = 3f;
+	float heightThreshold = 0.5f;
+	float upwardsVelThreshold = 5f;
 
-	float shakeThreshold = 150f;
+	float shakeThreshold = 130f;
 	int shakeTarget = 5;
 	int shakeCount = 0;
 
@@ -33,11 +31,6 @@ public class DetectAction : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (PSMoveInput.IsConnected && PSMoveInput.MoveControllers[0].Connected && !transitioning) {
-			if (initHeight == null) {
-				initHeight = moveData.Position.y;
-			}
-			//Debug.Log (initHeight);
-
 			if (inTheAir) {
 				DetectShakeAction ();
 			} else {
@@ -47,29 +40,23 @@ public class DetectAction : MonoBehaviour {
 	}
 
 	void DetectRaiseAction () {
-		//dandPos.Add (dandelion.transform.position);
 
-		//if (dandPos.Count > raiseDuration) {
-			float heightDiff = dandelion.transform.position.y - initHeight;
+		// Check if moving upwards past a certain heigt and pointing almost upwards 
+		if (moveData.HandleVelocity.y > upwardsVelThreshold &&
+		  		dandelion.transform.localPosition.y > heightThreshold && 
+		   		flower.transform.position.y + 2.5 > stalk.transform.position.y) {
+			Debug.Log ("Raise detected");
 
-			// Check if moving upwards and pointing upwards 
-			if (heightDiff > heightThreshold && flower.transform.position.y + 2.5 > stalk.transform.position.y) {
-				Debug.Log ("Raise detected");
-
-				transitioning = true;
-				PSMoveInput.MoveControllers[0].SetRumble(5);
-				Invoke("RemoveRumble", 1f);
-				Invoke("FinishTransition", transitionTime);
-				dandPos.Clear();
-				
-				// Delegate event to any listeners
-				if (actionDelegate != null) {
-					actionDelegate(ACTION.RAISE);
-				}
-		//	} else {
-		//		dandPos.RemoveAt(0);
+			transitioning = true;
+			PSMoveInput.MoveControllers[0].SetRumble(5);
+			Invoke("RemoveRumble", 1f);
+			Invoke("FinishTransition", transitionTime);
+			
+			// Delegate event to any listeners
+			if (actionDelegate != null) {
+				actionDelegate(ACTION.RAISE);
 			}
-		//}
+		}
 	}
 
 	void DetectShakeAction () {
