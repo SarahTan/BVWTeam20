@@ -14,7 +14,7 @@ public class DetectAction : MonoBehaviour {
 
 	bool inTheAir = false;
 	bool transitioning = false; // flag for rising up/landing motion
-	float transitionTime = 5f;
+	float transitionTime = 1f;
 
 	float heightThreshold = 0.5f;
 	float upwardsVelThreshold = 5f;
@@ -108,13 +108,13 @@ public class DetectAction : MonoBehaviour {
 	public DetectAction detectAction;	// get reference to DetectAction script
 	
 	void Start () {
-		detectAction.AddActionListener(TestListener);	// Add your listener to the delegate
+		detectAction.AddActionListener(ActionListener);	// Add your listener to the delegate
 	}
 
-	public void TestListener (DetectAction.ACTION action) {		// Called whenever an action occurs
+	public void ActionListener (DetectAction.ACTION action) {		// Called whenever an action occurs
 		Debug.Log(action);
 		
-		if (action == detectAction.ACTION.RAISE) {
+		if (action == DetectAction.ACTION.RAISE) {
 			// Do something
 			
 		}
