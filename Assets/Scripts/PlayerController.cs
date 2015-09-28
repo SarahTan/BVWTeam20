@@ -2,22 +2,28 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	
-	public Rigidbody rb;
+
 	public GameObject wind;
-	public bool allowRaise = true;
 	public float flySpeed = 2f;
 	public float landSpeed = 3f;
 	public DetectAction detectAction;
+	public int airTime;
+	public WindManager windManager;
+	public GameObject ovrCam;
 
+	static Vector3 ovrCamPos;
+	bool allowRaise = true;
 	GameObject target;
 	int maxAirTime = 300;
 
 	void Start () {
+		ovrCamPos = ovrCam.transform.localPosition;
 		detectAction.AddActionListener(ActionListener);
 	}
 	
 	void Update () {
+		ovrCam.transform.localPosition = ovrCamPos;
+
 		if(Input.GetKeyDown(KeyCode.I)){
 			if (allowRaise) {
 				ActionListener(DetectAction.ACTION.RAISE);
@@ -45,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	IEnumerator Move() {
-		int airTime = maxAirTime;		// max airtime in fixedupdate frames
+		airTime = maxAirTime;		// max airtime in fixedupdate frames
 
 		while (airTime > 0) {
 			if(airTime > maxAirTime-50) {
@@ -62,6 +68,9 @@ public class PlayerController : MonoBehaviour {
 
 
 	IEnumerator Land() {
+		airTime = 0;
+		windManager.SendPlayerDirection (target.transform.position - transform.position);
+
 		while (transform.position != target.transform.position) {
 			float step = landSpeed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, step);
