@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public GameObject wind;
 	public float flySpeed = 2f;
 	public float landSpeed = 3f;
 	public DetectAction detectAction;
@@ -55,9 +54,9 @@ public class PlayerController : MonoBehaviour {
 
 		while (airTime > 0) {
 			if(airTime > maxAirTime-50) {
-				transform.position += (wind.transform.forward + Vector3.up) * flySpeed*Time.deltaTime;
+				transform.position += (windManager.transform.forward + Vector3.up) * flySpeed*Time.deltaTime;
 			} else {
-				transform.position += wind.transform.forward * flySpeed*Time.deltaTime;
+				transform.position += windManager.transform.forward * flySpeed*Time.deltaTime;
 			}
 			airTime--;
 			yield return new WaitForFixedUpdate();
