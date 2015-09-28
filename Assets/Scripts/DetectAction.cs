@@ -17,7 +17,7 @@ public class DetectAction : MonoBehaviour {
 	float transitionTime = 1f;
 
 	float heightThreshold = 0.5f;
-	float upwardsVelThreshold = 5f;
+	float upwardsVelThreshold = 4f;
 
 	float shakeThreshold = 130f;
 	int shakeTarget = 5;
