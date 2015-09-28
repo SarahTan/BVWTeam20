@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour {
 	public float flySpeed = 2f;
 	public float landSpeed = 3f;
 	public DetectAction detectAction;
-
 	GameObject target;
 	int maxAirTime = 300;
+	public int airTime;
 
 	void Start () {
 		detectAction.AddActionListener(ActionListener);
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	IEnumerator Move() {
-		int airTime = maxAirTime;		// max airtime in fixedupdate frames
+		 airTime = maxAirTime;		// max airtime in fixedupdate frames
 
 		while (airTime > 0) {
 			if(airTime > maxAirTime-50) {
