@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e040b65c61493fb41b6d09c0c6f7b5af
-timeCreated: 1443406495
+guid: 0d044287934403c4d9650d8cca50124a
+timeCreated: 1443471749
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -21,8 +21,8 @@ ModelImporter:
     100026: joint7
     100028: joint8
     100030: joint9
-    400000: dandelion
-    400002: //RootNode
+    400000: //RootNode
+    400002: dandelion
     400004: joint1
     400006: joint10
     400008: joint11
