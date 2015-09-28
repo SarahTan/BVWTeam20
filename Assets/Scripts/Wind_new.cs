@@ -38,7 +38,7 @@ public class Wind_new : MonoBehaviour {
 				rb.useGravity = false;
 				occulus_char.GetComponent<OVRPlayerController>().GravityModifier = 0;
 				var jump = transform.position;
-				jump.y+=1;
+				jump.y+=2;
 				transform.position = jump;
 				StartCoroutine("Move");
 				//StartCoroutine("NextSpot");
@@ -55,7 +55,7 @@ public class Wind_new : MonoBehaviour {
 	}
 	IEnumerator MovetoTarget()
 	{
-		while (Vector3.Distance (target.transform.position, transform.position) > 5) {
+		while (Vector3.Distance (target.transform.position, transform.position) > 3) {
 			float step = speed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, step);
 			yield return new WaitForFixedUpdate();
