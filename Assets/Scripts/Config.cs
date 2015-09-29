@@ -57,32 +57,28 @@ public class Config : MonoBehaviour {
 	}
 
 
-	void OnGUI() {
-		if(!PSMoveInput.IsConnected) {
-			
-			GUI.Label(new Rect(20, 45, 30, 35), "IP:");
-			ipAddress = GUI.TextField(new Rect(60, 45, 120, 25), ipAddress);
-			
-			GUI.Label(new Rect(190, 45, 30, 35), "port:");
-			port = GUI.TextField(new Rect(230, 45, 50, 25), port);
-			
-			if(GUI.Button(new Rect(300, 40, 100, 35), "Connect")) {
-				PSMoveInput.Connect(ipAddress, int.Parse(port));
-			}
-			
-		}
-		
-	}
+//	void OnGUI() {
+//		if(!PSMoveInput.IsConnected) {
+//			
+//			GUI.Label(new Rect(20, 45, 30, 35), "IP:");
+//			ipAddress = GUI.TextField(new Rect(60, 45, 120, 25), ipAddress);
+//			
+//			GUI.Label(new Rect(190, 45, 30, 35), "port:");
+//			port = GUI.TextField(new Rect(230, 45, 50, 25), port);
+//			
+//			if(GUI.Button(new Rect(300, 40, 100, 35), "Connect")) {
+//				PSMoveInput.Connect(ipAddress, int.Parse(port));
+//			}
+//			
+//		}
+//		
+//	}
 
 	void Update() {
-		if (PSMoveInput.IsConnected) {
-			//Application.LoadLevel("intro");
-		} else {
-			if (initialTime + timeout < Time.time) {
-				Debug.Log ("Unsuccessful...reconnecting..");
-				initialTime = Time.time;
-				PSMoveInput.Connect(ipAddress, int.Parse(port));
-			}
+		if (!PSMoveInput.IsConnected && initialTime + timeout < Time.time) {
+			Debug.Log ("Unsuccessful...reconnecting..");
+			initialTime = Time.time;
+			PSMoveInput.Connect(ipAddress, int.Parse(port));
 		}
 	}
 
