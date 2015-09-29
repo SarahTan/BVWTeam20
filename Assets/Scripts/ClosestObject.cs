@@ -10,6 +10,7 @@ public class ClosestObject : MonoBehaviour {
 	public float distanceToDestroy = Mathf.Infinity;
 	public GameObject final_object;
 	GameObject[]objectArray;
+	GameObject lastObject;
 	//other variables here for other functionality in this script
 	
 	void Start()
@@ -21,7 +22,7 @@ public class ClosestObject : MonoBehaviour {
 	}
 	public GameObject findClosestObject()
 	{
-		
+		//closestObject.tag = "Untagged";
 		float distance = Mathf.Infinity;
 		
 		Vector3 position = playerObject.transform.position;
@@ -42,6 +43,7 @@ public class ClosestObject : MonoBehaviour {
 		
 		//Debug.Log (closestObject);
 		return closestObject;
+
 	}
 
 	
