@@ -16,7 +16,7 @@ public class WindManager : MonoBehaviour {
 	
 		Timer -= Time.deltaTime;
 		Vector3 dir = transform.rotation.eulerAngles;
-		if ((Timer < 0) || (player.GetComponent<PlayerController>().airTime == 0)) {
+		if ((Timer < 0) /*|| (player.GetComponent<PlayerController>().airTime == 0)*/) {
 			dir.y+=90;
 			transform.rotation = Quaternion.Euler(dir);
 			Timer = 10;

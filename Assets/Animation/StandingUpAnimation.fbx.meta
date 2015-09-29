@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: a10f1f8248965954ca098857e758fb51
-timeCreated: 1443477331
-licenseType: Free
+guid: 5e5e01967956dbf4faca1b7f71afb04c
+timeCreated: 1443484417
+licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -13,65 +13,65 @@ ModelImporter:
     100010: Dandelion_Fairies3:head
     100012: Dandelion_Fairies3:left
     100014: Dandelion_Fairies3:neck_cloth
-    100016: //RootNode
-    100018: Hat1
-    100020: Hat2
-    100022: HatEdge
-    100024: Head
-    100026: left
-    100028: leftAnkle
-    100030: LeftEar
-    100032: LeftEarEdge
-    100034: leftElbow
-    100036: leftFoot
-    100038: leftHandIK
-    100040: leftHip
-    100042: leftIndex1
-    100044: leftIndex2
-    100046: leftIndexEdge
-    100048: leftLegIK
-    100050: leftMiddle1
-    100052: leftMiddle2
-    100054: leftMiddleEdge
-    100056: leftRing1
-    100058: leftRing2
-    100060: leftRingEdge
-    100062: leftShoulder
-    100064: leftThumb
-    100066: leftThumbEdge
-    100068: lefttKnee
-    100070: leftToeEdge
-    100072: leftWrist
-    100074: Neck
-    100076: rightAnkle
-    100078: RightEar
-    100080: RightEarEdge
-    100082: rightElbow
-    100084: rightFoot
-    100086: rightHandIK_
-    100088: rightHandWrist
-    100090: rightHip
-    100092: rightIndex1
-    100094: rightIndex2
-    100096: rightIndexEdge
-    100098: rightKnee
-    100100: rightLegIK
-    100102: rightMiddle1
-    100104: rightMiddle2
-    100106: rightMiddleEdge
-    100108: rightRing1
-    100110: rightRing2
-    100112: rightRingEdge
-    100114: rightShoulder
-    100116: rightSmall1
-    100118: rightSmall1 1
-    100120: rightSmallEdge
-    100122: rightSmallEdge 1
-    100124: rightThumb
-    100126: rightThumbEdge
-    100128: rigthtToeEdge
-    100130: spinebase
-    100132: spineMid
+    100016: Hat1
+    100018: Hat2
+    100020: HatEdge
+    100022: Head
+    100024: left
+    100026: leftAnkle
+    100028: LeftEar
+    100030: LeftEarEdge
+    100032: leftElbow
+    100034: leftFoot
+    100036: leftHandIK
+    100038: leftHip
+    100040: leftIndex1
+    100042: leftIndex2
+    100044: leftIndexEdge
+    100046: leftLegIK
+    100048: leftMiddle1
+    100050: leftMiddle2
+    100052: leftMiddleEdge
+    100054: leftRing1
+    100056: leftRing2
+    100058: leftRingEdge
+    100060: leftShoulder
+    100062: leftThumb
+    100064: leftThumbEdge
+    100066: lefttKnee
+    100068: leftToeEdge
+    100070: leftWrist
+    100072: Neck
+    100074: rightAnkle
+    100076: RightEar
+    100078: RightEarEdge
+    100080: rightElbow
+    100082: rightFoot
+    100084: rightHandIK_
+    100086: rightHandWrist
+    100088: rightHip
+    100090: rightIndex1
+    100092: rightIndex2
+    100094: rightIndexEdge
+    100096: rightKnee
+    100098: rightLegIK
+    100100: rightMiddle1
+    100102: rightMiddle2
+    100104: rightMiddleEdge
+    100106: rightRing1
+    100108: rightRing2
+    100110: rightRingEdge
+    100112: rightShoulder
+    100114: rightSmall1
+    100116: rightSmall1 1
+    100118: rightSmallEdge
+    100120: rightSmallEdge 1
+    100122: rightThumb
+    100124: rightThumbEdge
+    100126: rigthtToeEdge
+    100128: spinebase
+    100130: spineMid
+    100132: //RootNode
     400000: chest
     400002: Dandelion_Fairies3:body
     400004: Dandelion_Fairies3:Faries_MDL
@@ -80,71 +80,71 @@ ModelImporter:
     400010: Dandelion_Fairies3:head
     400012: Dandelion_Fairies3:left
     400014: Dandelion_Fairies3:neck_cloth
-    400016: //RootNode
-    400018: Hat1
-    400020: Hat2
-    400022: HatEdge
-    400024: Head
-    400026: left
-    400028: leftAnkle
-    400030: LeftEar
-    400032: LeftEarEdge
-    400034: leftElbow
-    400036: leftFoot
-    400038: leftHandIK
-    400040: leftHip
-    400042: leftIndex1
-    400044: leftIndex2
-    400046: leftIndexEdge
-    400048: leftLegIK
-    400050: leftMiddle1
-    400052: leftMiddle2
-    400054: leftMiddleEdge
-    400056: leftRing1
-    400058: leftRing2
-    400060: leftRingEdge
-    400062: leftShoulder
-    400064: leftThumb
-    400066: leftThumbEdge
-    400068: lefttKnee
-    400070: leftToeEdge
-    400072: leftWrist
-    400074: Neck
-    400076: rightAnkle
-    400078: RightEar
-    400080: RightEarEdge
-    400082: rightElbow
-    400084: rightFoot
-    400086: rightHandIK_
-    400088: rightHandWrist
-    400090: rightHip
-    400092: rightIndex1
-    400094: rightIndex2
-    400096: rightIndexEdge
-    400098: rightKnee
-    400100: rightLegIK
-    400102: rightMiddle1
-    400104: rightMiddle2
-    400106: rightMiddleEdge
-    400108: rightRing1
-    400110: rightRing2
-    400112: rightRingEdge
-    400114: rightShoulder
-    400116: rightSmall1
-    400118: rightSmall1 1
-    400120: rightSmallEdge
-    400122: rightSmallEdge 1
-    400124: rightThumb
-    400126: rightThumbEdge
-    400128: rigthtToeEdge
-    400130: spinebase
-    400132: spineMid
+    400016: Hat1
+    400018: Hat2
+    400020: HatEdge
+    400022: Head
+    400024: left
+    400026: leftAnkle
+    400028: LeftEar
+    400030: LeftEarEdge
+    400032: leftElbow
+    400034: leftFoot
+    400036: leftHandIK
+    400038: leftHip
+    400040: leftIndex1
+    400042: leftIndex2
+    400044: leftIndexEdge
+    400046: leftLegIK
+    400048: leftMiddle1
+    400050: leftMiddle2
+    400052: leftMiddleEdge
+    400054: leftRing1
+    400056: leftRing2
+    400058: leftRingEdge
+    400060: leftShoulder
+    400062: leftThumb
+    400064: leftThumbEdge
+    400066: lefttKnee
+    400068: leftToeEdge
+    400070: leftWrist
+    400072: Neck
+    400074: rightAnkle
+    400076: RightEar
+    400078: RightEarEdge
+    400080: rightElbow
+    400082: rightFoot
+    400084: rightHandIK_
+    400086: rightHandWrist
+    400088: rightHip
+    400090: rightIndex1
+    400092: rightIndex2
+    400094: rightIndexEdge
+    400096: rightKnee
+    400098: rightLegIK
+    400100: rightMiddle1
+    400102: rightMiddle2
+    400104: rightMiddleEdge
+    400106: rightRing1
+    400108: rightRing2
+    400110: rightRingEdge
+    400112: rightShoulder
+    400114: rightSmall1
+    400116: rightSmall1 1
+    400118: rightSmallEdge
+    400120: rightSmallEdge 1
+    400122: rightThumb
+    400124: rightThumbEdge
+    400126: rigthtToeEdge
+    400128: spinebase
+    400130: spineMid
+    400132: //RootNode
     4300000: Dandelion_Fairies3:neck_cloth
     4300002: Dandelion_Fairies3:body
     4300004: Dandelion_Fairies3:head
     4300006: Dandelion_Fairies3:hat_body
     4300008: Dandelion_Fairies3:hat_ball
-    7400000: Flying
+    7400000: Standing
     9500000: //RootNode
     13700000: Dandelion_Fairies3:body
     13700002: Dandelion_Fairies3:hat_ball
@@ -172,10 +172,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Flying
+      name: Standing
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 120
+      lastFrame: 180
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

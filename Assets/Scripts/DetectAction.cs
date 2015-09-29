@@ -9,12 +9,13 @@ public class DetectAction : MonoBehaviour {
 	public delegate void ActionDelegate(ACTION action);
 	ActionDelegate actionDelegate;
 
+	public PlayerController player;
 	public GameObject dandelion, stalk, flower;
 	MoveData moveData;
 
 	bool inTheAir = false;
 	bool transitioning = false; // flag for rising up/landing motion
-	float transitionTime = 1f;
+	float transitionTime = 3f;
 
 	float heightThreshold = 0.5f;
 	float upwardsVelThreshold = 4f;
@@ -31,8 +32,8 @@ public class DetectAction : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (PSMoveInput.IsConnected && PSMoveInput.MoveControllers[0].Connected && !transitioning) {
-			if (inTheAir) {
-				DetectShakeAction ();
+			if (!player.allowRaise) {
+				//DetectShakeAction ();
 			} else {
 				DetectRaiseAction ();
 			}
@@ -43,7 +44,7 @@ public class DetectAction : MonoBehaviour {
 
 		// Check if moving upwards past a certain heigt and pointing almost upwards 
 		if (moveData.HandleVelocity.y > upwardsVelThreshold &&
-		  		dandelion.transform.localPosition.y > heightThreshold && 
+		  		/*dandelion.transform.localPosition.y > heightThreshold && */
 		   		flower.transform.position.y + 2.5 > stalk.transform.position.y) {
 			Debug.Log ("Raise detected");
 
