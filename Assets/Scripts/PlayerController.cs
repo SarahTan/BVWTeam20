@@ -3,63 +3,66 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public float flySpeed = 2f;
-	public float landSpeed = 3f;
-	public DetectAction detectAction;
+	public SetDirection setDirection;
+	public float speed = 2f;
 
-	static Vector3 ovrCamPos;
-	public bool allowRaise = true;
-	GameObject target;
-	int maxAirTime = 600;
+	Rigidbody rb;
+	bool onGround = false;
+	Vector3 oldVel = Vector3.zero;
+	Vector3 newVel = Vector3.zero;
+	float transitionTime = 1f;
+	float initialTime;
 
 	void Start () {
-		detectAction.AddActionListener(ActionListener);
+		rb = GetComponent<Rigidbody> ();
+		initialTime = Time.time;
+		InvokeRepeating ("GetNewVel", 0f, 0.5f);
 	}
 	
 	void Update () {
-
-	}
-
-
-	public void ActionListener (DetectAction.ACTION action) {		// Called whenever an action occurs
-//		Debug.Log(action);
-//		StopCoroutine("Move");
-//		StopCoroutine("Land");
-		
-//		if (action == DetectAction.ACTION.RAISE) {
-//			allowRaise = false;
-//			StartCoroutine("Move");			
-//		} else if (action == DetectAction.ACTION.SHAKE) {
-//			target = gameObject.GetComponent<ClosestObject>().findClosestObject();
-//			StartCoroutine("Land");
-//		}
-	}
-
-
-//	IEnumerator Move() {
-//		airTime = maxAirTime;		// max airtime in fixedupdate frames
-//
-//		while (airTime > 0) {
-//			if(airTime > maxAirTime-50) {
-//				transform.position += (windManager.transform.forward + Vector3.up) * flySpeed*Time.deltaTime;
-//			} else {
-//				transform.position += windManager.transform.forward * flySpeed*Time.deltaTime;
-//			}
-//			airTime--;
-//			yield return new WaitForFixedUpdate();
-//		}
-//		ActionListener(DetectAction.ACTION.SHAKE);	// force user to land when airtime runs out
-//	}
-
-
-	IEnumerator Land() {
-	//	airTime = 0;
-		while (Vector3.Distance (transform.position, target.transform.position) > 3) {
-			float step = landSpeed * Time.deltaTime;
-			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, step);
-			yield return new WaitForFixedUpdate();
+		if (onGround) {
+			if (newVel.y < 0) {
+				rb.velocity = Vector3.zero;
+			} else {
+				rb.velocity = newVel*speed;
+			}
+		} else {
+			rb.velocity = Vector3.MoveTowards(oldVel, newVel, speed*Time.deltaTime) * speed;
 		}
-		Debug.Log ("here");
-		allowRaise = true;
+	}
+
+	void GetNewVel () {
+		if (setDirection.direction != newVel) {
+			oldVel = newVel;
+			newVel = setDirection.direction;
+		}
+
+		if (newVel.y > 0) {
+			// call sound manager
+		} else {
+			//call sound manager
+		}
+	}
+
+	//TODO: fix jittering issue where you enter/exit multiple times before completely taking off
+
+	void OnCollisionEnter (Collision collision) {
+		//if (initialTime + transitionTime > Time.time) {
+			if (collision.gameObject.name == "Terrain") {
+				Debug.Log ("collided with terrain");
+				onGround = true;
+			}
+		//	initialTime = Time.time;
+		//}
+	}
+
+	void OnCollisionExit (Collision collision) {
+		//if (initialTime + transitionTime > Time.time) {
+			Debug.Log ("exit");
+			if (collision.gameObject.name == "Terrain") {
+				onGround = false;
+			}
+		//	initialTime = Time.time;
+		//}
 	}
 }
