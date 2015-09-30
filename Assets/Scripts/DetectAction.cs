@@ -5,42 +5,36 @@ using System.Collections.Generic;
 
 public class DetectAction : MonoBehaviour {
 
-	public enum ACTION {RAISE, SHAKE};
+	public enum ACTION {UP, DOWN, LEFT, RIGHT};
 	public delegate void ActionDelegate(ACTION action);
 	ActionDelegate actionDelegate;
 
-	public PlayerController player;
 	public GameObject dandelion, stalk, flower;
 	MoveData moveData;
 
-	bool inTheAir = false;
 	bool transitioning = false; // flag for rising up/landing motion
 	float transitionTime = 3f;
 
 	float heightThreshold = 0.5f;
 	float upwardsVelThreshold = 4f;
 
-	float shakeThreshold = 130f;
-	int shakeTarget = 5;
-	int shakeCount = 0;
-
-
 	// Use this for initialization
 	void Start () {
 		moveData = PSMoveInput.MoveControllers[0].Data;
+		//Invoke ("CalibrateHeight", 1f);
 	}
 
 	void FixedUpdate () {
 		if (PSMoveInput.IsConnected && PSMoveInput.MoveControllers[0].Connected && !transitioning) {
-			if (!player.allowRaise) {
-				//DetectShakeAction ();
-			} else {
-				DetectRaiseAction ();
-			}
+			GetDirection ();
 		}
 	}
 
-	void DetectRaiseAction () {
+	void CalibrateHeight () {
+
+	}
+
+	void GetDirection () {
 
 		// Check if moving upwards past a certain heigt and pointing almost upwards 
 		if (moveData.HandleVelocity.y > upwardsVelThreshold &&
@@ -55,39 +49,9 @@ public class DetectAction : MonoBehaviour {
 			
 			// Delegate event to any listeners
 			if (actionDelegate != null) {
-				actionDelegate(ACTION.RAISE);
+				//actionDelegate(ACTION.RAISE);
 			}
 		}
-	}
-
-	void DetectShakeAction () {
-		// Check if moving fast enough/direction changing
-		if (moveData.Acceleration.magnitude > shakeThreshold) {
-			shakeCount++;
-
-			// Check if there are sufficient shakes
-			if (shakeCount > shakeTarget) {
-				Debug.Log ("Shake detected");
-				
-				transitioning = true;
-				PSMoveInput.MoveControllers[0].SetRumble(10);
-				Invoke("RemoveRumble", 1f);
-				Invoke ("FinishTransition", transitionTime);
-				shakeCount = 0;
-
-				// Delegate event to any listeners
-				if (actionDelegate != null) {
-					actionDelegate(ACTION.SHAKE);
-				}
-			}
-		} else {
-			shakeCount = 0;		// reset once guest stops shaking
-		}
-	}
-
-	void FinishTransition () {
-		inTheAir = !inTheAir;
-		transitioning = false;
 	}
 
 	void RemoveRumble () {

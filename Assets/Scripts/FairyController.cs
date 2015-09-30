@@ -4,7 +4,6 @@ using System.Collections;
 public class FairyController : MonoBehaviour {
 
 	public int waitTime;
-	public WindManager windManager;
 	public float flySpeed = 2f;
 	public float landSpeed = 3f;
 	public int airTime;
@@ -29,9 +28,9 @@ public class FairyController : MonoBehaviour {
 		while (airTime > 0) {
 
 			if(airTime > maxAirTime-50) {
-				transform.position += (windManager.transform.forward + Vector3.up) * flySpeed*Time.deltaTime;
+				//transform.position += (windManager.transform.forward + Vector3.up) * flySpeed*Time.deltaTime;
 			} else {
-				transform.position += windManager.transform.forward * flySpeed*Time.deltaTime;
+				//transform.position += windManager.transform.forward * flySpeed*Time.deltaTime;
 			}
 			airTime--;
 			yield return new WaitForFixedUpdate();

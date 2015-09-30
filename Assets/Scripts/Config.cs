@@ -5,18 +5,66 @@ using System.Text;
 using System.Collections;
 
 public class Config : MonoBehaviour {
-	
+
+	public PSMove psMove;
 	public static string ipAddress = "128.2.237.66";
 	public static string port = "7899";
-	private float timeout = 2.0f;
 	public static string filename = "config.ini";
-	private float initialTime;
+
+	int controllerNum = -1;
+	float initialTime;
+	float timeout = 2.0f;
+	bool calibrating = false;
     
 	void Start() {
 		loadFile("config.ini");
 		initialTime = Time.time;
 		PSMoveInput.Connect(ipAddress, int.Parse(port));
 		Debug.Log ("Connecting... Address: " + ipAddress + ", Port: " + port);
+		if (PSMoveInput.IsConnected) {
+			Debug.Log ("Connected!");
+		}
+
+		StartCoroutine ("GetControllerNum");
+	}	
+	
+	void Update() {
+		// Auto reconnect and auto calibrate
+		if (!PSMoveInput.IsConnected && initialTime + timeout > Time.time) {
+			Debug.Log ("Reconnecting");
+			initialTime = Time.time;
+			PSMoveInput.Connect (ipAddress, int.Parse (port));
+		} else if (controllerNum != -1 && !PSMoveInput.MoveControllers [controllerNum].Connected && !calibrating) {
+			StartCoroutine("CalibrateController");
+		}
+	}
+
+	IEnumerator CalibrateController () {
+		calibrating = true;
+
+		Debug.Log("Recalibrating");
+		PSMoveInput.MoveControllers [controllerNum].CalibrateAndTrack ();
+		yield return new WaitForSeconds (1f);
+
+		calibrating = false;
+	}
+
+	IEnumerator GetControllerNum () {
+		yield return new WaitForSeconds (1f);	// wait for ps move to connect before trying to get controllers
+
+		// Keep looping until a controller is detected
+		while(PSMoveInput.IsConnected && controllerNum == -1) {
+			for (int i = 0; i < 4; i++) {
+				if (PSMoveInput.MoveControllers[i].Connected) {
+					controllerNum = i;
+					break;
+				}
+			}
+			Debug.Log("Using controller " + controllerNum);
+
+			yield return new WaitForSeconds(1f);
+		}
+		psMove.SetControllerNum(controllerNum);
 	}
 
 
@@ -36,11 +84,9 @@ public class Config : MonoBehaviour {
                     if (data.Length == 2) {
                         switch(data[0]) {
                         case "IP Address":
-                            Debug.Log ("IP Address: " + data[1]);
                             ipAddress = data[1].Trim();
                             break;
                         case "Port":
-                            Debug.Log ("Port: " + data[1]);
                             port = data[1].Trim ();
                             break;
                         default:
@@ -53,32 +99,6 @@ public class Config : MonoBehaviour {
 			return;
 		} catch (Exception e) {
 
-		}
-	}
-
-
-//	void OnGUI() {
-//		if(!PSMoveInput.IsConnected) {
-//			
-//			GUI.Label(new Rect(20, 45, 30, 35), "IP:");
-//			ipAddress = GUI.TextField(new Rect(60, 45, 120, 25), ipAddress);
-//			
-//			GUI.Label(new Rect(190, 45, 30, 35), "port:");
-//			port = GUI.TextField(new Rect(230, 45, 50, 25), port);
-//			
-//			if(GUI.Button(new Rect(300, 40, 100, 35), "Connect")) {
-//				PSMoveInput.Connect(ipAddress, int.Parse(port));
-//			}
-//			
-//		}
-//		
-//	}
-
-	void Update() {
-		if (!PSMoveInput.IsConnected && initialTime + timeout < Time.time) {
-			Debug.Log ("Unsuccessful...reconnecting..");
-			initialTime = Time.time;
-			PSMoveInput.Connect(ipAddress, int.Parse(port));
 		}
 	}
 

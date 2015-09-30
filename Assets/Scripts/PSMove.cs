@@ -3,51 +3,37 @@ using System.Collections;
 using System;
 
 public class PSMove : MonoBehaviour {
-	
+
 	public GameObject OVRPlayer;
 	public string ipAddress = "128.2.237.66";
 	public string port = "7899";
 		
 	public GameObject gem, handle;
-	public int controllerNum;
 	public bool isMirror = true;
-	
-	public float zOffset = 5;
+
 	Quaternion temp = new Quaternion(0,0,0,0);
 	float zPlane;
+	int controllerNum = -1;
+	float initHeight;
 	
 	#region GUI Variables
 	string cameraStr = "Camera Switch On";
 	string rStr = "0", gStr = "0", bStr = "0";
 	string rumbleStr = "0";
 	#endregion
-	
-	float initHeight = 0f;
-	
+		
 	// Use this for initialization
 	void Start () {
 		zPlane = handle.transform.localPosition.z + 0.5f;
-
-		if (PSMoveInput.IsConnected) {
-			for (int i = 0; i < 4; i++) {
-				if (PSMoveInput.MoveControllers[i].Connected) {
-					controllerNum = i;
-					break;
-				}
-			}
-		}
+		initHeight = handle.transform.localPosition.y;
 	}
 
 	void FixedUpdate () {	
-		if (PSMoveInput.IsConnected) {
+		if (PSMoveInput.IsConnected && controllerNum != -1) {
 			if (PSMoveInput.MoveControllers [controllerNum].Connected) {
 				Vector3 gemPos, handlePos;
 				MoveData moveData = PSMoveInput.MoveControllers [controllerNum].Data;
 
-				if (initHeight == 0) {
-					initHeight = moveData.HandlePosition.y;
-					Debug.Log (initHeight);
-				}
 				gemPos = moveData.Position;
 				handlePos = moveData.HandlePosition;
 
@@ -57,12 +43,12 @@ public class PSMove : MonoBehaviour {
 					handle.transform.localRotation = Quaternion.Euler (moveData.Orientation);
 				} else {
 					gemPos.z = zPlane;
-					gemPos.y = (moveData.Position.y - initHeight) / 4;
-					gemPos.x = moveData.Position.x / 5;
+					gemPos.y = (moveData.Position.y + initHeight)/ 4;
+					gemPos.x = (moveData.Position.x / 5) + 0.5f;
 
 					handlePos.z = zPlane;
-					handlePos.y = (moveData.HandlePosition.y - initHeight) / 4;
-					handlePos.x = moveData.HandlePosition.x / 5;
+					handlePos.y = (moveData.HandlePosition.y + initHeight)/ 4 ;
+					handlePos.x = (moveData.HandlePosition.x / 5) + 0.5f;
 
 					gem.transform.localPosition = gemPos;
 					handle.transform.localPosition = handlePos;
@@ -80,10 +66,12 @@ public class PSMove : MonoBehaviour {
 					temp.y = -moveData.QOrientation.y;
 					handle.transform.localRotation = temp;			
 				}
-			} else {
-				PSMoveInput.MoveControllers [controllerNum].CalibrateAndTrack ();
 			}
 		}
+	}
+
+	public void SetControllerNum (int num) {
+		controllerNum = num;
 	}
 
 	private void Reset() {

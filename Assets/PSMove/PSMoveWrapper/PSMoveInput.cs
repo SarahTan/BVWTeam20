@@ -106,7 +106,6 @@ public static class PSMoveInput {
 			return;
 		}
 		IsConnected = PSMoveNetwork.client_connect(address, port);
-		Debug.Log("Connect");		
 	}
 	
 	/// <summary>
