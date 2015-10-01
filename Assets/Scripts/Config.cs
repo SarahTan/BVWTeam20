@@ -6,17 +6,18 @@ using System.Collections;
 
 public class Config : MonoBehaviour {
 
-	public PSMove psMove;
 	public static string ipAddress = "128.2.237.66";
 	public static string port = "7899";
 	public static string filename = "config.ini";
 
+	PSMove psMove;
 	int controllerNum = -1;
 	float initialTime;
 	float timeout = 2.0f;
 	bool calibrating = false;
     
 	void Start() {
+		psMove = GetComponent<PSMove> ();
 		loadFile("config.ini");
 		initialTime = Time.time;
 		PSMoveInput.Connect(ipAddress, int.Parse(port));
