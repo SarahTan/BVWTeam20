@@ -19,7 +19,7 @@ public class FairyGuideController : MonoBehaviour {
 	void Start () {
 		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
-		Invoke ("TakeOff", 7f);
+		Invoke ("TakeOff", 5f);
 	}
 	
 	// Update is called once per frame
