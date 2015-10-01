@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public SetDirection setDirection;
-	public float speed = 2f;
+	public float speed = 5f;
 
 	Rigidbody rb;
 	bool onGround = false;
@@ -36,33 +36,25 @@ public class PlayerController : MonoBehaviour {
 			oldVel = newVel;
 			newVel = setDirection.direction;
 		}
+	}
 
-		if (newVel.y > 0) {
-			// call sound manager
-		} else {
-			//call sound manager
+	void OnCollisionEnter (Collision collision) {
+		if (Time.time > initialTime + transitionTime) {
+			if (collision.gameObject.name == "Terrain") {
+				Debug.Log ("enter");
+				onGround = true;
+			}
+			initialTime = Time.time;
 		}
 	}
 
-	//TODO: fix jittering issue where you enter/exit multiple times before completely taking off
-
-	void OnCollisionEnter (Collision collision) {
-		//if (initialTime + transitionTime > Time.time) {
-			if (collision.gameObject.name == "Terrain") {
-				Debug.Log ("collided with terrain");
-				onGround = true;
-			}
-		//	initialTime = Time.time;
-		//}
-	}
-
 	void OnCollisionExit (Collision collision) {
-		//if (initialTime + transitionTime > Time.time) {
+		if (Time.time > initialTime + transitionTime) {
 			Debug.Log ("exit");
 			if (collision.gameObject.name == "Terrain") {
 				onGround = false;
 			}
-		//	initialTime = Time.time;
-		//}
+			initialTime = Time.time;
+		}
 	}
 }

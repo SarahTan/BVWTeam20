@@ -7,7 +7,7 @@ public class SetDirection : MonoBehaviour {
 	public GameObject flower;
 	public GameObject stalk;
 	public Vector3 direction;
-	public float upSpeed = 0.5f;
+	public float upSpeed = 1f;
 	public float updateDirectionTimeout = 0.5f;
 
 	// Use this for initialization
@@ -39,13 +39,18 @@ public class SetDirection : MonoBehaviour {
 	}
 
 	void GetDirection () {
-		// TODO: remove y component before normalising
+		direction.x = flower.transform.position.x - stalk.transform.position.x;
+		direction.z = flower.transform.position.z - stalk.transform.position.z;
+		if (direction.z < 0) {
+			direction.z = 0;
+		}
 
-		direction = (flower.transform.position - stalk.transform.position).normalized;
 		if (up) {
 			direction.y = upSpeed;
 		} else {
 			direction.y = -upSpeed;
 		}
+
+		direction = direction.normalized;
 	}
 }
