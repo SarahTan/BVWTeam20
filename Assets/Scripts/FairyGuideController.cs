@@ -1,27 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class FairyGuideController : MonoBehaviour {
 
 	public GameObject player;
 
 	public float startDuration = 5f;
-	public float speed = 5f;
-	public float upSpeed = 1f;
+	public float speed = 3f;
 	public GameObject turnRightTrigger;
 	public GameObject endSpot;
-	public float separationThreshold = 5f;
+	public float separationThreshold = 15f;
 	public float separationCooldown = 3f;
 
-	Animator anim;
-
+	Animator animator;
 	Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
-		anim = GetComponent<Animator> ();
+		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
-		Invoke ("TakeOff", startDuration);
+		Invoke ("TakeOff", 5f);
+		InvokeRepeating ("WaitForPlayer", 0f, separationCooldown);
 	}
 	
 	// Update is called once per frame
@@ -31,6 +30,7 @@ public class NewBehaviourScript : MonoBehaviour {
 
 	void WaitForPlayer () {
 		if (Vector3.Distance (player.transform.position, transform.position) > separationThreshold) {
+			rb.velocity = Vector3.zero;
 			// hover animation
 
 			// call out to player
@@ -39,16 +39,18 @@ public class NewBehaviourScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
+		Debug.Log (other.gameObject.name);
 		if (other.gameObject.name == "TurnRightTrigger") {
 			// down right animation
 
 			rb.velocity = (endSpot.transform.position - transform.position).normalized * speed;
+
 		}
 	}
 
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.name == "Terrain") {
-			anim.SetBool ("isFlying", false);
+			animator.SetBool ("isFlying", false);
 
 			rb.velocity = Vector3.zero;
 			//DeactivateGuide();
@@ -56,7 +58,7 @@ public class NewBehaviourScript : MonoBehaviour {
 	}
 
 	void TakeOff () {
-		anim.SetBool ("isFlying", true);
+		animator.SetBool ("isFlying", true);
 		rb.velocity = (turnRightTrigger.transform.position - transform.position).normalized * speed;
 	}
 
