@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UpTriggerController : MonoBehaviour {
+public class DrawTrigger : MonoBehaviour {
 
 
 	// Use this for initialization
