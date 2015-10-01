@@ -3,78 +3,58 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public float flySpeed = 2f;
-	public float landSpeed = 3f;
-	public DetectAction detectAction;
-	public int airTime;
-	public WindManager windManager;
-	public GameObject ovrCam;
+	public SetDirection setDirection;
+	public float speed = 5f;
 
-	static Vector3 ovrCamPos;
-	bool allowRaise = true;
-	GameObject target;
-	int maxAirTime = 300;
+	Rigidbody rb;
+	bool onGround = false;
+	Vector3 oldVel = Vector3.zero;
+	Vector3 newVel = Vector3.zero;
+	float transitionTime = 1f;
+	float initialTime;
 
 	void Start () {
-		ovrCamPos = ovrCam.transform.localPosition;
-		detectAction.AddActionListener(ActionListener);
+		rb = GetComponent<Rigidbody> ();
+		initialTime = Time.time;
+		InvokeRepeating ("GetNewVel", 0f, 0.5f);
 	}
 	
 	void Update () {
-		ovrCam.transform.localPosition = ovrCamPos;
-
-		if(Input.GetKeyDown(KeyCode.I)){
-			if (allowRaise) {
-				ActionListener(DetectAction.ACTION.RAISE);
-				allowRaise = false;
+		if (onGround) {
+			if (newVel.y < 0) {
+				rb.velocity = Vector3.zero;
 			} else {
-				ActionListener(DetectAction.ACTION.SHAKE);
-				allowRaise = true;
+				rb.velocity = newVel*speed;
 			}
+		} else {
+			rb.velocity = Vector3.MoveTowards(oldVel, newVel, speed*Time.deltaTime) * speed;
 		}
 	}
 
-
-	public void ActionListener (DetectAction.ACTION action) {		// Called whenever an action occurs
-		Debug.Log(action);
-		StopCoroutine("Move");
-		StopCoroutine("Land");
-		
-		if (action == DetectAction.ACTION.RAISE) {
-			StartCoroutine("Move");			
-		} else if (action == DetectAction.ACTION.SHAKE) {
-			target = gameObject.GetComponent<ClosestObject>().findClosestObject();
-			StartCoroutine("Land");
+	void GetNewVel () {
+		if (setDirection.direction != newVel) {
+			oldVel = newVel;
+			newVel = setDirection.direction;
 		}
 	}
 
-
-	IEnumerator Move() {
-		airTime = maxAirTime;		// max airtime in fixedupdate frames
-
-		while (airTime > 0) {
-			if(airTime > maxAirTime-50) {
-				transform.position += (windManager.transform.forward + Vector3.up) * flySpeed*Time.deltaTime;
-			} else {
-				transform.position += windManager.transform.forward * flySpeed*Time.deltaTime;
+	void OnCollisionEnter (Collision collision) {
+		if (Time.time > initialTime + transitionTime) {
+			if (collision.gameObject.name == "Terrain") {
+				Debug.Log ("enter");
+				onGround = true;
 			}
-			airTime--;
-			yield return new WaitForFixedUpdate();
+			initialTime = Time.time;
 		}
-		ActionListener(DetectAction.ACTION.SHAKE);	// force user to land when airtime runs out
-		allowRaise = false;
 	}
 
-
-	IEnumerator Land() {
-		airTime = 0;
-		windManager.SendPlayerDirection (target.transform.position - transform.position);
-
-		while (transform.position != target.transform.position) {
-			float step = landSpeed * Time.deltaTime;
-			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, step);
-			yield return new WaitForFixedUpdate();
+	void OnCollisionExit (Collision collision) {
+		if (Time.time > initialTime + transitionTime) {
+			Debug.Log ("exit");
+			if (collision.gameObject.name == "Terrain") {
+				onGround = false;
+			}
+			initialTime = Time.time;
 		}
-		allowRaise = true;
 	}
 }
