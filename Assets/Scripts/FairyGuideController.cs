@@ -38,6 +38,10 @@ public class FairyGuideController : MonoBehaviour {
 		}
 	}
 
+	void ContinueFlying () {
+
+	}
+
 	void OnTriggerEnter (Collider other) {
 		Debug.Log (other.gameObject.name);
 		if (other.gameObject.name == "TurnRightTrigger") {
