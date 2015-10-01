@@ -3,8 +3,7 @@ using System.Collections;
 using System;
 
 public class PSMove : MonoBehaviour {
-
-	public GameObject OVRPlayer;
+	
 	public string ipAddress = "128.2.237.66";
 	public string port = "7899";
 		
