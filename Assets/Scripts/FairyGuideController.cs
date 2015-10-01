@@ -9,7 +9,7 @@ public class FairyGuideController : MonoBehaviour {
 	public float speed = 3f;
 	public GameObject turnRightTrigger;
 	public GameObject endSpot;
-	public float separationThreshold = 5f;
+	public float separationThreshold = 15f;
 	public float separationCooldown = 3f;
 
 	Animator animator;
@@ -19,7 +19,8 @@ public class FairyGuideController : MonoBehaviour {
 	void Start () {
 		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
-		Invoke ("TakeOff", 7f);
+		Invoke ("TakeOff", 5f);
+		InvokeRepeating ("WaitForPlayer", 0f, separationCooldown);
 	}
 	
 	// Update is called once per frame
@@ -29,6 +30,7 @@ public class FairyGuideController : MonoBehaviour {
 
 	void WaitForPlayer () {
 		if (Vector3.Distance (player.transform.position, transform.position) > separationThreshold) {
+			rb.velocity = Vector3.zero;
 			// hover animation
 
 			// call out to player
