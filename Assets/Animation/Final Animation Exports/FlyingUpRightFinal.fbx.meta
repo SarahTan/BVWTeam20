@@ -1,0 +1,215 @@
+fileFormatVersion: 2
+guid: 4dc8ff72823383f44b24bb53072503fa
+timeCreated: 1443752149
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: DandelionFairyRigFinal:chest
+    100002: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    100004: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL
+    100006: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    100008: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    100010: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    100012: DandelionFairyRigFinal:Dandelion_Fairies3:left
+    100014: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+    100016: DandelionFairyRigFinal:Hat1
+    100018: DandelionFairyRigFinal:Hat2
+    100020: DandelionFairyRigFinal:HatEdge
+    100022: DandelionFairyRigFinal:Head
+    100024: DandelionFairyRigFinal:left
+    100026: DandelionFairyRigFinal:leftAnkle
+    100028: DandelionFairyRigFinal:LeftEar
+    100030: DandelionFairyRigFinal:LeftEarEdge
+    100032: DandelionFairyRigFinal:leftElbow
+    100034: DandelionFairyRigFinal:leftFoot
+    100036: DandelionFairyRigFinal:leftHandIK
+    100038: DandelionFairyRigFinal:leftHip
+    100040: DandelionFairyRigFinal:leftIndex1
+    100042: DandelionFairyRigFinal:leftIndex2
+    100044: DandelionFairyRigFinal:leftIndexEdge
+    100046: DandelionFairyRigFinal:leftLegIK
+    100048: DandelionFairyRigFinal:leftMiddle1
+    100050: DandelionFairyRigFinal:leftMiddle2
+    100052: DandelionFairyRigFinal:leftMiddleEdge
+    100054: DandelionFairyRigFinal:leftRing1
+    100056: DandelionFairyRigFinal:leftRing2
+    100058: DandelionFairyRigFinal:leftRingEdge
+    100060: DandelionFairyRigFinal:leftShoulder
+    100062: DandelionFairyRigFinal:leftThumb
+    100064: DandelionFairyRigFinal:leftThumbEdge
+    100066: DandelionFairyRigFinal:lefttKnee
+    100068: DandelionFairyRigFinal:leftToeEdge
+    100070: DandelionFairyRigFinal:leftWrist
+    100072: DandelionFairyRigFinal:Neck
+    100074: DandelionFairyRigFinal:rightAnkle
+    100076: DandelionFairyRigFinal:RightEar
+    100078: DandelionFairyRigFinal:RightEarEdge
+    100080: DandelionFairyRigFinal:rightElbow
+    100082: DandelionFairyRigFinal:rightFoot
+    100084: DandelionFairyRigFinal:rightHandIK_
+    100086: DandelionFairyRigFinal:rightHandWrist
+    100088: DandelionFairyRigFinal:rightHip
+    100090: DandelionFairyRigFinal:rightIndex1
+    100092: DandelionFairyRigFinal:rightIndex2
+    100094: DandelionFairyRigFinal:rightIndexEdge
+    100096: DandelionFairyRigFinal:rightKnee
+    100098: DandelionFairyRigFinal:rightLegIK
+    100100: DandelionFairyRigFinal:rightMiddle1
+    100102: DandelionFairyRigFinal:rightMiddle2
+    100104: DandelionFairyRigFinal:rightMiddleEdge
+    100106: DandelionFairyRigFinal:rightRing1
+    100108: DandelionFairyRigFinal:rightRing2
+    100110: DandelionFairyRigFinal:rightRingEdge
+    100112: DandelionFairyRigFinal:rightShoulder
+    100114: DandelionFairyRigFinal:rightSmall1
+    100116: DandelionFairyRigFinal:rightSmall1 1
+    100118: DandelionFairyRigFinal:rightSmallEdge
+    100120: DandelionFairyRigFinal:rightSmallEdge 1
+    100122: DandelionFairyRigFinal:rightThumb
+    100124: DandelionFairyRigFinal:rightThumbEdge
+    100126: DandelionFairyRigFinal:rigthtToeEdge
+    100128: DandelionFairyRigFinal:spinebase
+    100130: DandelionFairyRigFinal:spineMid
+    100132: //RootNode
+    400000: DandelionFairyRigFinal:chest
+    400002: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    400004: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL
+    400006: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    400008: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    400010: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    400012: DandelionFairyRigFinal:Dandelion_Fairies3:left
+    400014: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+    400016: DandelionFairyRigFinal:Hat1
+    400018: DandelionFairyRigFinal:Hat2
+    400020: DandelionFairyRigFinal:HatEdge
+    400022: DandelionFairyRigFinal:Head
+    400024: DandelionFairyRigFinal:left
+    400026: DandelionFairyRigFinal:leftAnkle
+    400028: DandelionFairyRigFinal:LeftEar
+    400030: DandelionFairyRigFinal:LeftEarEdge
+    400032: DandelionFairyRigFinal:leftElbow
+    400034: DandelionFairyRigFinal:leftFoot
+    400036: DandelionFairyRigFinal:leftHandIK
+    400038: DandelionFairyRigFinal:leftHip
+    400040: DandelionFairyRigFinal:leftIndex1
+    400042: DandelionFairyRigFinal:leftIndex2
+    400044: DandelionFairyRigFinal:leftIndexEdge
+    400046: DandelionFairyRigFinal:leftLegIK
+    400048: DandelionFairyRigFinal:leftMiddle1
+    400050: DandelionFairyRigFinal:leftMiddle2
+    400052: DandelionFairyRigFinal:leftMiddleEdge
+    400054: DandelionFairyRigFinal:leftRing1
+    400056: DandelionFairyRigFinal:leftRing2
+    400058: DandelionFairyRigFinal:leftRingEdge
+    400060: DandelionFairyRigFinal:leftShoulder
+    400062: DandelionFairyRigFinal:leftThumb
+    400064: DandelionFairyRigFinal:leftThumbEdge
+    400066: DandelionFairyRigFinal:lefttKnee
+    400068: DandelionFairyRigFinal:leftToeEdge
+    400070: DandelionFairyRigFinal:leftWrist
+    400072: DandelionFairyRigFinal:Neck
+    400074: DandelionFairyRigFinal:rightAnkle
+    400076: DandelionFairyRigFinal:RightEar
+    400078: DandelionFairyRigFinal:RightEarEdge
+    400080: DandelionFairyRigFinal:rightElbow
+    400082: DandelionFairyRigFinal:rightFoot
+    400084: DandelionFairyRigFinal:rightHandIK_
+    400086: DandelionFairyRigFinal:rightHandWrist
+    400088: DandelionFairyRigFinal:rightHip
+    400090: DandelionFairyRigFinal:rightIndex1
+    400092: DandelionFairyRigFinal:rightIndex2
+    400094: DandelionFairyRigFinal:rightIndexEdge
+    400096: DandelionFairyRigFinal:rightKnee
+    400098: DandelionFairyRigFinal:rightLegIK
+    400100: DandelionFairyRigFinal:rightMiddle1
+    400102: DandelionFairyRigFinal:rightMiddle2
+    400104: DandelionFairyRigFinal:rightMiddleEdge
+    400106: DandelionFairyRigFinal:rightRing1
+    400108: DandelionFairyRigFinal:rightRing2
+    400110: DandelionFairyRigFinal:rightRingEdge
+    400112: DandelionFairyRigFinal:rightShoulder
+    400114: DandelionFairyRigFinal:rightSmall1
+    400116: DandelionFairyRigFinal:rightSmall1 1
+    400118: DandelionFairyRigFinal:rightSmallEdge
+    400120: DandelionFairyRigFinal:rightSmallEdge 1
+    400122: DandelionFairyRigFinal:rightThumb
+    400124: DandelionFairyRigFinal:rightThumbEdge
+    400126: DandelionFairyRigFinal:rigthtToeEdge
+    400128: DandelionFairyRigFinal:spinebase
+    400130: DandelionFairyRigFinal:spineMid
+    400132: //RootNode
+    4300000: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+    4300002: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    4300004: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    4300006: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    4300008: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    13700002: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    13700004: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    13700006: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    13700008: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

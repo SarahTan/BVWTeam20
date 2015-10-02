@@ -21,6 +21,8 @@ ModelImporter:
     100026: joint7
     100028: joint8
     100030: joint9
+    100032: group5
+    100034: pSphere1
     400000: //RootNode
     400002: dandelion
     400004: joint1
@@ -37,7 +39,17 @@ ModelImporter:
     400026: joint7
     400028: joint8
     400030: joint9
+    400032: group5
+    400034: pSphere1
+    2300000: dandelion
+    2300002: group5
+    2300004: pSphere1
+    3300000: dandelion
+    3300002: group5
+    3300004: pSphere1
     4300000: dandelion
+    4300002: pSphere1
+    4300004: group5
     9500000: //RootNode
     13700000: dandelion
   materials:

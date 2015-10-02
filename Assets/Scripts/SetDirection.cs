@@ -7,7 +7,7 @@ public class SetDirection : MonoBehaviour {
 	public GameObject flower;
 	public GameObject stalk;
 	public Vector3 direction;
-	public float upSpeed = 1f;
+	public float upSpeed = 0.7f;
 	public float updateDirectionTimeout = 0.5f;
 
 	// Use this for initialization
