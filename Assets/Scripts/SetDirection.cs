@@ -7,7 +7,7 @@ public class SetDirection : MonoBehaviour {
 	public GameObject flower;
 	public GameObject stalk;
 	public Vector3 direction;
-	public float upSpeed = 0.7f;
+	public float upSpeed = 0.3f;
 	public float updateDirectionTimeout = 0.5f;
 
 	// Use this for initialization
@@ -39,11 +39,23 @@ public class SetDirection : MonoBehaviour {
 	}
 
 	void GetDirection () {
-		direction.x = flower.transform.position.x - stalk.transform.position.x;
-		direction.z = flower.transform.position.z - stalk.transform.position.z;
-		if (direction.z < 0) {
-			direction.z = 0;
+		if (transform.localPosition.x > 2.5) {
+			Debug.Log ("Far right");
+			direction.x = 1f;
+		} else if (transform.localPosition.x < -1.2) {
+			Debug.Log("Far left");
+			direction.x = -1f;
+		} else {
+			Debug.Log ("Normal");
+			direction.x = flower.transform.position.x - stalk.transform.position.x;
 		}
+
+		direction.z = flower.transform.position.z - stalk.transform.position.z;
+
+
+//		if (direction.z < 0) {
+//			direction.z = 0;
+//		}
 
 		if (up) {
 			direction.y = upSpeed;
@@ -52,5 +64,6 @@ public class SetDirection : MonoBehaviour {
 		}
 
 		direction = direction.normalized;
+		Debug.Log (direction);
 	}
 }
