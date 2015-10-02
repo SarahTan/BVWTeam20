@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	public SetDirection setDirection;
 	public float speed = 5f;
+	//public float upSpeed = 0.7f;
 
 	Rigidbody rb;
 	bool onGround = false;
