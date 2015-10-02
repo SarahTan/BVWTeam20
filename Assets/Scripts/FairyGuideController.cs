@@ -12,6 +12,7 @@ public class FairyGuideController : MonoBehaviour {
 	public float separationThreshold = 15f;
 	public float separationCooldown = 3f;
 
+	bool guideComplete = false;
 	Animator animator;
 	Rigidbody rb;
 
@@ -20,7 +21,7 @@ public class FairyGuideController : MonoBehaviour {
 		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
 		Invoke ("TakeOff", 5f);
-		InvokeRepeating ("WaitForPlayer", 0f, separationCooldown);
+		StartCoroutine ("WaitForPlayer");
 	}
 	
 	// Update is called once per frame
@@ -28,15 +29,26 @@ public class FairyGuideController : MonoBehaviour {
 
 	}
 
-	void WaitForPlayer () {
-		if (Vector3.Distance (player.transform.position, transform.position) > separationThreshold) {
-			rb.velocity = Vector3.zero;
-			// hover animation
+	IEnumerator WaitForPlayer () {
+		Vector3 currentVel;
+		while (!guideComplete) {
+			if (Vector3.Distance (player.transform.position, transform.position) > separationThreshold) {
+				currentVel = rb.velocity;
+				rb.velocity = Vector3.zero;
+				// hover animation
 
-			// call out to player
-			// randomise text
+				// call out to player
+				// randomise text
+
+				while (Vector3.Distance (player.transform.position, transform.position) > separationThreshold) {
+					Debug.Log (Vector3.Distance (player.transform.position, transform.position));
+					yield return new WaitForSeconds(1f);
+				}
+				rb.velocity = currentVel;
+			}
+			yield return new WaitForSeconds(separationCooldown);
 		}
-	}
+	} 
 
 	void OnTriggerEnter (Collider other) {
 		Debug.Log (other.gameObject.name);
@@ -44,7 +56,6 @@ public class FairyGuideController : MonoBehaviour {
 			// down right animation
 
 			rb.velocity = (endSpot.transform.position - transform.position).normalized * speed;
-
 		}
 	}
 
@@ -53,6 +64,7 @@ public class FairyGuideController : MonoBehaviour {
 			animator.SetBool ("isFlying", false);
 
 			rb.velocity = Vector3.zero;
+			guideComplete = true;
 			//DeactivateGuide();
 		}
 	}
