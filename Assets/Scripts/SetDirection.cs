@@ -12,6 +12,7 @@ public class SetDirection : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		return;
 		InvokeRepeating ("GetDirection", 0f, updateDirectionTimeout);
 	}
 	
