@@ -2,10 +2,16 @@
 using System.Collections;
 
 public class SoundManager : MonoBehaviour {
-	public float fadeSpeed = 0.25f;
+	public float fadeSpeed = 0.4f;
 	public float maxVolumn_Rising = 1f;
 
 	public GameObject player;
+
+	public AudioSource bgmMain;
+	public AudioSource bgmRise;
+
+
+	public AudioClip bgmRace;
 
 	public AudioClip crashIntoTreeSFX;
 	public AudioClip crashIntoSpiderWebSFX;
@@ -35,56 +41,42 @@ public class SoundManager : MonoBehaviour {
 		if (Input.GetKeyDown ("m"))	mainThemeStop ();
 		if (Input.GetKeyDown ("n"))	mainThemeStart ();
 		if (Input.GetKeyDown ("r"))	raceThemeStart ();
+		if (Input.GetKeyDown ("e"))	raceThemeStop ();
 	}
 
 	public void mainThemeStart(){
-		GameObject go;
-		AudioSource audios;
-		go = GameObject.Find("bgmMain");
-		audios = go.GetComponent<AudioSource> ();
 //		Debug.Log ("Start Main Theme");
-		StartCoroutine(MusicFadeIn (audios, 1f,1f));
+		StartCoroutine(MusicFadeIn (bgmMain, 1f,1f));
+		bgmRise.Play ();
 	}
 
-	//Call when the guest arrive starting point
+	//Call when the guest arrive starting point (hit the ground)
 	//Beware!!!! This function must be called after the mainTheme fade in is COMPLETELY DONE (volumn = 1)!
 	//Cause I'm too lazy to adjust it XD
 	public void mainThemeStop(){
-		GameObject go;
-		AudioSource audios;
-		go = GameObject.Find("bgmMain");
-		audios = go.GetComponent<AudioSource> ();
-		StartCoroutine(MusicFadeOut (audios,1f));
+		StartCoroutine(MusicFadeOut (bgmMain,1f));
+		StartCoroutine(MusicFadeOut (bgmRise,1f));
 	}
 
+	//Call when the race begins
 	public void raceThemeStart(){
-		Debug.Log ("Race Theme start");
-		GameObject bgmRace;
-		GameObject bgmRise;
-		AudioSource raceAS;
-		AudioSource riseAS;
-		bgmRace = GameObject.Find("bgmRace");
-		bgmRise = GameObject.Find("bgmRise");
-		raceAS = bgmRace.GetComponent<AudioSource> ();
-		riseAS = bgmRise.GetComponent<AudioSource> ();
-		Debug.Log ("Race Theme start playing");
-		raceAS.Play ();
-		riseAS.Play ();
-
-
+		bgmMain.clip = bgmRace;
+		bgmMain.volume = 1f;
+		bgmMain.Play ();
+		bgmRise.Play ();
 	}
-	
+
+	public void raceThemeStop(){
+		StartCoroutine(MusicFadeOut (bgmMain,1f));
+		StartCoroutine(MusicFadeOut (bgmRise,1f));
+	}
 
 	//Call when the guest starts to rise
 	public void RisingMusicStart(){ 
 //		Debug.Log("Start Rising");
-		GameObject go;
-		AudioSource audios;
-		go = GameObject.Find("bgmRise");
-		audios = go.GetComponent<AudioSource> ();
 		FallingMusicStop();
 		isRising = true;
-		StartCoroutine(FRMusicFadeIn(audios,maxVolumn_Rising));
+		StartCoroutine(FRMusicFadeIn(bgmRise,maxVolumn_Rising));
 	}
 
 	//Call when the guest starts to fall or drop
@@ -96,7 +88,7 @@ public class SoundManager : MonoBehaviour {
 		audios = go.GetComponent<AudioSource> ();
 		RisingMusicStop();
 		isFalling = true;
-		StartCoroutine(FRMusicFadeOut(audios));
+		StartCoroutine(FRMusicFadeOut(bgmRise));
 	}
 
 	//Call when the guest stay stable (not rising, not falling)
@@ -141,20 +133,22 @@ public class SoundManager : MonoBehaviour {
 
 	IEnumerator FRMusicFadeIn(AudioSource audios, float maxVolumn){
 		//		Debug.Log("Start fade in." + "isRisingOrFalling = " + isRising);
-		while (audios.volume <= maxVolumn && isRising){
-			//			Debug.Log("volumn up");
-			audios.volume += fadeSpeed * Time.deltaTime;
-			yield return new WaitForSeconds(Time.deltaTime);
-		}
+		if(audios.isPlaying)
+			while (audios.volume <= maxVolumn && isRising){
+				//			Debug.Log("volumn up");
+				audios.volume += fadeSpeed * Time.deltaTime;
+				yield return new WaitForSeconds(Time.deltaTime);
+			}
 	}
 
 	IEnumerator FRMusicFadeOut(AudioSource audios){
 		//		Debug.Log("Start fade out." + "isRisingOrFalling = " + isFalling);
-		while (audios.volume >= 0.01 && isFalling){
-			//			Debug.Log("volumn down");
-			audios.volume -= fadeSpeed * Time.deltaTime;
-			yield return new WaitForSeconds(Time.deltaTime);
-		}
+		if(audios.isPlaying)
+			while (audios.volume >= 0.01 && isFalling){
+				//			Debug.Log("volumn down");
+				audios.volume -= fadeSpeed * Time.deltaTime;
+				yield return new WaitForSeconds(Time.deltaTime);
+			}
 	}
 
 
