@@ -8,7 +8,7 @@ public class FairyGuideController : MonoBehaviour {
 	public float startDuration = 5f;
 	public float speed = 3f;
 	public GameObject turnRightTrigger;
-	public GameObject startingLine;
+	public GameObject startingGrounds;
 	public float separationThreshold = 15f;
 	public float separationCooldown = 3f;
 
@@ -55,7 +55,7 @@ public class FairyGuideController : MonoBehaviour {
 		if (other.gameObject.name == "TurnRightTrigger") {
 			// down right animation
 
-			rb.velocity = (startingLine.transform.position - transform.position).normalized * speed;
+			rb.velocity = (startingGrounds.transform.position - transform.position).normalized * speed;
 		}
 	}
 

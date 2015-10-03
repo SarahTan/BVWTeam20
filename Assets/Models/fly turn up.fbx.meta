@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9376e87ed3663d8499355907085a1ff1
-timeCreated: 1443896701
+guid: be5d8911cef0b614c9d6351dad08ef0a
+timeCreated: 1443896703
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -91,7 +91,8 @@ ModelImporter:
     100166: DandelionFairyRigFinal:spinebase
     100168: DandelionFairyRigFinal:spineMid
     100170: //RootNode
-    100172: left
+    100172: group1
+    100174: left
     400000: DandelionFairyRigFinal:chest
     400002: DandelionFairyRigFinal:dandelion
     400004: DandelionFairyRigFinal:dandelion2:dandelion
@@ -178,7 +179,8 @@ ModelImporter:
     400166: DandelionFairyRigFinal:spinebase
     400168: DandelionFairyRigFinal:spineMid
     400170: //RootNode
-    400172: left
+    400172: group1
+    400174: left
     2300000: DandelionFairyRigFinal:dandelion2:dandelion
     2300002: DandelionFairyRigFinal:dandelion2:group5
     2300004: DandelionFairyRigFinal:dandelion2:pSphere1
