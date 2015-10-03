@@ -39,23 +39,15 @@ public class SetDirection : MonoBehaviour {
 	}
 
 	void GetDirection () {
-		if (transform.localPosition.x > 2.5) {
-			Debug.Log ("Far right");
+		if (transform.localPosition.x > 1.5) {
 			direction.x = 1f;
-		} else if (transform.localPosition.x < -1.2) {
-			Debug.Log("Far left");
+		} else if (transform.localPosition.x < -0.7) {
 			direction.x = -1f;
 		} else {
-			Debug.Log ("Normal");
 			direction.x = flower.transform.position.x - stalk.transform.position.x;
 		}
 
 		direction.z = flower.transform.position.z - stalk.transform.position.z;
-
-
-//		if (direction.z < 0) {
-//			direction.z = 0;
-//		}
 
 		if (up) {
 			direction.y = upSpeed;
