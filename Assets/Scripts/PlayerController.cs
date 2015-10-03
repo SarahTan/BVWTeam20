@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Time.time > initialTime + transitionTime) {
 			if (collision.gameObject.name == "Terrain") {
-				Debug.Log ("enter");
+				//Debug.Log ("enter");
 				onGround = true;
 
 				// play landing anim
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionExit (Collision collision) {
-		Debug.Log ("exit");
+		//Debug.Log ("exit");
 		if (collision.gameObject.name == "Terrain") {
 			onGround = false;
 		}
@@ -114,6 +114,6 @@ public class PlayerController : MonoBehaviour {
 
 	void ResumeNormalSpeed () {
 		speed = normalSpeed;
-		Debug.Log ("Speed back to normal " + speed);
+		//Debug.Log ("Speed back to normal " + speed);
 	}
 }

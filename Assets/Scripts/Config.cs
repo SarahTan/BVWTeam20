@@ -61,7 +61,7 @@ public class Config : MonoBehaviour {
 					break;
 				}
 			}
-			Debug.Log("Using controller " + controllerNum);
+			//Debug.Log("Using controller " + controllerNum);
 
 			yield return new WaitForSeconds(1f);
 		}
