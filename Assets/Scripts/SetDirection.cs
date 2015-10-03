@@ -56,6 +56,5 @@ public class SetDirection : MonoBehaviour {
 		}
 
 		direction = direction.normalized;
-		Debug.Log (direction);
 	}
 }
