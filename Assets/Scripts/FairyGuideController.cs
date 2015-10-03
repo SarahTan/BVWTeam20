@@ -8,7 +8,7 @@ public class FairyGuideController : MonoBehaviour {
 	public float startDuration = 5f;
 	public float speed = 3f;
 	public GameObject turnRightTrigger;
-	public GameObject endSpot;
+	public GameObject startingLine;
 	public float separationThreshold = 15f;
 	public float separationCooldown = 3f;
 
@@ -41,7 +41,7 @@ public class FairyGuideController : MonoBehaviour {
 				// randomise text
 
 				while (Vector3.Distance (player.transform.position, transform.position) > separationThreshold) {
-					Debug.Log (Vector3.Distance (player.transform.position, transform.position));
+					//Debug.Log (Vector3.Distance (player.transform.position, transform.position));
 					yield return new WaitForSeconds(1f);
 				}
 				rb.velocity = currentVel;
@@ -55,7 +55,7 @@ public class FairyGuideController : MonoBehaviour {
 		if (other.gameObject.name == "TurnRightTrigger") {
 			// down right animation
 
-			rb.velocity = (endSpot.transform.position - transform.position).normalized * speed;
+			rb.velocity = (startingLine.transform.position - transform.position).normalized * speed;
 		}
 	}
 
