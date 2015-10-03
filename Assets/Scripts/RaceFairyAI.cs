@@ -13,7 +13,7 @@ public class RaceFairyAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Time.timeScale = 5;
+		//Time.timeScale = 5;
 		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
 		animator.SetBool ("isFlying", true);
