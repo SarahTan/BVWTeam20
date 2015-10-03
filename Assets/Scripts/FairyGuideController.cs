@@ -11,6 +11,7 @@ public class FairyGuideController : MonoBehaviour {
 	public GameObject startingGrounds;
 	public float separationThreshold = 15f;
 	public float separationCooldown = 3f;
+	public GameObject fairydust;
 
 	bool guideComplete = false;
 	Animator animator;
@@ -22,6 +23,8 @@ public class FairyGuideController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		Invoke ("TakeOff", 5f);
 		StartCoroutine ("WaitForPlayer");
+		fairydust = gameObject.transform.GetChild (1).gameObject;
+		fairydust.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -31,10 +34,12 @@ public class FairyGuideController : MonoBehaviour {
 
 	IEnumerator WaitForPlayer () {
 		Vector3 currentVel;
+
 		while (!guideComplete) {
 			if (Vector3.Distance (player.transform.position, transform.position) > separationThreshold) {
 				currentVel = rb.velocity;
 				rb.velocity = Vector3.zero;
+				fairydust.SetActive (false);
 				// hover animation
 
 				// call out to player
@@ -61,10 +66,12 @@ public class FairyGuideController : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.name == "Terrain") {
+
 			animator.SetBool ("isFlying", false);
 
 			rb.velocity = Vector3.zero;
 			guideComplete = true;
+			fairydust.SetActive (false);
 			//DeactivateGuide();
 		}
 	}
@@ -72,6 +79,7 @@ public class FairyGuideController : MonoBehaviour {
 	void TakeOff () {
 		animator.SetBool ("isFlying", true);
 		rb.velocity = (turnRightTrigger.transform.position - transform.position).normalized * speed;
+		fairydust.SetActive (true);
 	}
 
 	void DeactivateGuide () {
