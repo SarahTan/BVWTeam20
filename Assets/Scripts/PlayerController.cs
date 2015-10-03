@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public SetDirection setDirection;
+	public Transform startPos;
 
 	Rigidbody rb;
 	float speed = 3f;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 		if (playerInControl) {
+			//Debug.Log(newVel);
 			if (onGround) {
 				if (newVel.y < 0) {
 					rb.velocity = Vector3.zero;
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour {
 		yield return new WaitForSeconds (3f);	// change to length of ready go audio
 		playerInControl = true;
 		speed = 8f;
+		normalSpeed = speed;
 	}
 
 
@@ -89,24 +92,28 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.tag == "SlowDown") {
+		if (other.gameObject.name == "spiderweb trigger" && speed == normalSpeed) {
+			Debug.Log("Spiderweb! slowing down from " + speed);
 			normalSpeed = speed;
 			speed /= 2f;
 			// play sound which lasts 2-3s
 
-			Invoke("ResumeNormalSpeed", 3f);	// invoke immediately after sound ends
-		} else if (other.gameObject.name == "StartingLine") {
+			Invoke ("ResumeNormalSpeed", 3f);	// invoke immediately after sound ends
+		} else if (other.gameObject.name == "StartCollider") {
 			playerInControl = false;
 			Debug.Log ("transitioning");
 
 			// fade to black
 
 			// move player to start
-			rb.velocity = (other.gameObject.transform.position - transform.position).normalized * speed;
+			rb.velocity = (startPos.position - transform.position).normalized * speed;
+		} else if (other.gameObject.name == "Endgame Collider") {
+			Debug.Log ("GAME FINISHED");
 		}
 	}
 
 	void ResumeNormalSpeed () {
 		speed = normalSpeed;
+		Debug.Log ("Speed back to normal " + speed);
 	}
 }
