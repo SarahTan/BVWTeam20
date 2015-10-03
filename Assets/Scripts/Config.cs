@@ -58,11 +58,10 @@ public class Config : MonoBehaviour {
 			for (int i = 0; i < 4; i++) {
 				if (PSMoveInput.MoveControllers[i].Connected) {
 					controllerNum = i;
+					Debug.Log("Using controller " + controllerNum);
 					break;
 				}
 			}
-			Debug.Log("Using controller " + controllerNum);
-
 			yield return new WaitForSeconds(1f);
 		}
 		psMove.SetControllerNum(controllerNum);
