@@ -8,10 +8,17 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 	public GameObject startPos;
 	public GameObject ovrCam;
-	
+	public Shader shader1;
+	public Shader shader2;
+	public Material tree_material;
+	public Material tree_material2;
+	private int times;
 	// Use this for initialization
 	void Start () {
-	
+		shader1 = Shader.Find("Diffuse");
+		shader2 = Shader.Find("Self-Illumin/Diffuse");
+		times = 0;
+		
 	}
 	
 	// Update is called once per frame
@@ -46,6 +53,7 @@ public class GameManager : MonoBehaviour {
 
 		// flash treehouse
 
+		InvokeRepeating("Flash", 2, 0.1F);
 		// play fairies talking and ready, 3 2 1 audio
 
 		// play GO! audio
@@ -56,6 +64,20 @@ public class GameManager : MonoBehaviour {
 	public void RaceEnd () {
 		StopAllCoroutines();
 		StartCoroutine("RaceEnd");
+	}
+	public void Flash()
+	{
+
+		if (times < 20) {
+			tree_material.shader = shader1;
+			tree_material2.shader = shader1;
+			if(times%2==0)
+				shader1 = Shader.Find("Self-Illumin/Diffuse");
+			else
+				shader1 = Shader.Find("Diffuse");
+			//yield return new WaitForSeconds(0.2f);
+			times++;
+		}
 	}
 
 	IEnumerator RaceEndSeq () {
