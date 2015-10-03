@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	public SetDirection setDirection;
 	public Transform startPos;
+	public GameManager gameManager;
 
 	Rigidbody rb;
 	float speed = 3f;
@@ -47,26 +48,6 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter (Collision collision) {
-		if (!playerInControl && collision.gameObject.name == "Terrain") {
-			StartCoroutine("RaceStart");
-		}
-	}
-
-
-
-	IEnumerator RaceStart () {
-		// play ready go audio
-		Debug.Log ("Ready go audio");
-
-		yield return new WaitForSeconds (3f);	// change to length of ready go audio
-		playerInControl = true;
-		speed = 8f;
-		normalSpeed = speed;
-	}
-
-
-
 	void OnCollisionStay (Collision collision) {
 		if (collision.gameObject.tag == "Obstacle") {
 			// play crashing sound
@@ -75,7 +56,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (Time.time > initialTime + transitionTime) {
 			if (collision.gameObject.name == "Terrain") {
-				Debug.Log ("enter");
 				onGround = true;
 
 				// play landing anim
@@ -85,7 +65,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionExit (Collision collision) {
-		Debug.Log ("exit");
 		if (collision.gameObject.name == "Terrain") {
 			onGround = false;
 		}
@@ -101,15 +80,20 @@ public class PlayerController : MonoBehaviour {
 			Invoke ("ResumeNormalSpeed", 3f);	// invoke immediately after sound ends
 		} else if (other.gameObject.name == "StartCollider") {
 			playerInControl = false;
-			Debug.Log ("transitioning");
-
-			// fade to black
-
-			// move player to start
+			gameManager.RaceStart();
 			rb.velocity = (startPos.position - transform.position).normalized * speed;
+
 		} else if (other.gameObject.name == "Endgame Collider") {
 			Debug.Log ("GAME FINISHED");
 		}
+	}
+
+	
+	public void RaceStart () {
+		speed = 8f;
+		normalSpeed = speed;
+		playerInControl = true;
+		Debug.Log ("player back in control");
 	}
 
 	void ResumeNormalSpeed () {
