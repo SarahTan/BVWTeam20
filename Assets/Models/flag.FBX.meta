@@ -33,7 +33,7 @@ ModelImporter:
     3300000: Box2
     4300000: Box2
     4300002: flag2
-    7400000: Take 001
+    7400000: Flag Flying
     9500000: //RootNode
     13700000: flag2
   materials:
@@ -55,7 +55,57 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Flag Flying
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: base01
+        weight: 1
+      - path: base01/start01
+        weight: 1
+      - path: base01/start01/BoneA
+        weight: 1
+      - path: base01/start01/BoneA/BoneB
+        weight: 1
+      - path: base01/start01/BoneA/BoneB/BoneC
+        weight: 1
+      - path: base01/start01/BoneA/BoneB/BoneC/BoneD
+        weight: 1
+      - path: base01/start01/BoneA/BoneB/BoneC/BoneD/BoneE
+        weight: 1
+      - path: base01/start01/BoneA/BoneB/BoneC/BoneD/BoneE/BoneF
+        weight: 1
+      - path: base01/start01/BoneA/BoneB/BoneC/BoneD/BoneE/BoneF/BoneG
+        weight: 1
+      - path: base01/start01/Box2
+        weight: 1
+      - path: flag2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
