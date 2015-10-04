@@ -84,7 +84,9 @@ public class PlayerController : MonoBehaviour {
 			rb.velocity = (startPos.position - transform.position).normalized * speed;
 
 		} else if (other.gameObject.name == "Endgame Collider") {
-			gameManager.RaceEnd();
+			int position = 3 - GameObject.FindGameObjectsWithTag("RaceFairy").Length;
+			gameManager.RaceEnd(position);
+			playerInControl = false;
 		}
 	}
 
