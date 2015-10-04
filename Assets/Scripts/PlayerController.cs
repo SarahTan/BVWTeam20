@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour {
 				rb.velocity = Vector3.MoveTowards (oldVel, newVel, speed * Time.deltaTime) * speed;
 			}
 		}
-		Debug.Log (playerInControl);
 	}
 
 	void GetNewVel () {
