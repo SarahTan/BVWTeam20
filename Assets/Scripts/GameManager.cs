@@ -11,12 +11,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-	
+			
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public void RaceStart () {
@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour {
 		// move player to start and face the treehouse
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		player.transform.position = startPos.transform.position;
-		Debug.Log (player.transform.position);
 		player.transform.forward = Vector3.forward;
 		ovrCam.transform.rotation = Quaternion.identity;
 		yield return new WaitForSeconds (0.5f);
