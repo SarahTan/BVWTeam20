@@ -8,10 +8,11 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 	public GameObject startPos;
 	public GameObject ovrCam;
+	public SoundManager soundManager;
 	
 	// Use this for initialization
 	void Start () {
-			
+		soundManager.mainThemeStart ();
 	}
 	
 	// Update is called once per frame
@@ -42,17 +43,23 @@ public class GameManager : MonoBehaviour {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
-
+		
+		soundManager.mainThemeStop ();
 		// flash treehouse
 
 		// play fairies talking and ready, 3 2 1 audio
+		soundManager.dialog05GJOnReachStart ();
+		soundManager.dialog06NowLetsStartRaceReady321 ();
 
-		// play GO! audio
 		GameObject[] aiFairies = GameObject.FindGameObjectsWithTag("RaceFairy");
 		foreach(GameObject fairy in aiFairies){
 			fairy.GetComponent<RaceFairyAI>().enabled = true;
 		}
 		player.GetComponent<PlayerController> ().RaceStart ();
+		soundManager.dialog07Go ();
+
+		yield return new WaitForSeconds (9f);
+		soundManager.raceThemeStart ();
 	}
 
 	public void RaceEnd () {
@@ -75,6 +82,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// play audio/anim
-
+		//soundManager.dialog08Congra ();
 	}
 }

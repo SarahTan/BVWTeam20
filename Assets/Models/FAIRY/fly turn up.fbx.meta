@@ -1,0 +1,470 @@
+fileFormatVersion: 2
+guid: be5d8911cef0b614c9d6351dad08ef0a
+timeCreated: 1443896703
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: DandelionFairyRigFinal:chest
+    100002: DandelionFairyRigFinal:dandelion
+    100004: DandelionFairyRigFinal:dandelion2:dandelion
+    100006: DandelionFairyRigFinal:dandelion2:group5
+    100008: DandelionFairyRigFinal:dandelion2:joint1
+    100010: DandelionFairyRigFinal:dandelion2:joint10
+    100012: DandelionFairyRigFinal:dandelion2:joint11
+    100014: DandelionFairyRigFinal:dandelion2:joint12
+    100016: DandelionFairyRigFinal:dandelion2:joint13
+    100018: DandelionFairyRigFinal:dandelion2:joint14
+    100020: DandelionFairyRigFinal:dandelion2:joint2
+    100022: DandelionFairyRigFinal:dandelion2:joint3
+    100024: DandelionFairyRigFinal:dandelion2:joint4
+    100026: DandelionFairyRigFinal:dandelion2:joint5
+    100028: DandelionFairyRigFinal:dandelion2:joint6
+    100030: DandelionFairyRigFinal:dandelion2:joint7
+    100032: DandelionFairyRigFinal:dandelion2:joint8
+    100034: DandelionFairyRigFinal:dandelion2:joint9
+    100036: DandelionFairyRigFinal:dandelion2:pSphere1
+    100038: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    100040: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL
+    100042: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    100044: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    100046: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    100048: DandelionFairyRigFinal:Dandelion_Fairies3:left
+    100050: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+    100052: DandelionFairyRigFinal:Hat1
+    100054: DandelionFairyRigFinal:Hat2
+    100056: DandelionFairyRigFinal:HatEdge
+    100058: DandelionFairyRigFinal:Head
+    100060: DandelionFairyRigFinal:left
+    100062: DandelionFairyRigFinal:leftAnkle
+    100064: DandelionFairyRigFinal:LeftEar
+    100066: DandelionFairyRigFinal:LeftEarEdge
+    100068: DandelionFairyRigFinal:leftElbow
+    100070: DandelionFairyRigFinal:leftFoot
+    100072: DandelionFairyRigFinal:leftHandIK
+    100074: DandelionFairyRigFinal:leftHip
+    100076: DandelionFairyRigFinal:leftIndex1
+    100078: DandelionFairyRigFinal:leftIndex2
+    100080: DandelionFairyRigFinal:leftIndexEdge
+    100082: DandelionFairyRigFinal:leftLegIK
+    100084: DandelionFairyRigFinal:leftMiddle1
+    100086: DandelionFairyRigFinal:leftMiddle2
+    100088: DandelionFairyRigFinal:leftMiddleEdge
+    100090: DandelionFairyRigFinal:leftRing1
+    100092: DandelionFairyRigFinal:leftRing2
+    100094: DandelionFairyRigFinal:leftRingEdge
+    100096: DandelionFairyRigFinal:leftShoulder
+    100098: DandelionFairyRigFinal:leftThumb
+    100100: DandelionFairyRigFinal:leftThumbEdge
+    100102: DandelionFairyRigFinal:lefttKnee
+    100104: DandelionFairyRigFinal:leftToeEdge
+    100106: DandelionFairyRigFinal:leftWrist
+    100108: DandelionFairyRigFinal:Neck
+    100110: DandelionFairyRigFinal:nurbsCircle1
+    100112: DandelionFairyRigFinal:rightAnkle
+    100114: DandelionFairyRigFinal:RightEar
+    100116: DandelionFairyRigFinal:RightEarEdge
+    100118: DandelionFairyRigFinal:rightElbow
+    100120: DandelionFairyRigFinal:rightFoot
+    100122: DandelionFairyRigFinal:rightHandIK_
+    100124: DandelionFairyRigFinal:rightHandWrist
+    100126: DandelionFairyRigFinal:rightHip
+    100128: DandelionFairyRigFinal:rightIndex1
+    100130: DandelionFairyRigFinal:rightIndex2
+    100132: DandelionFairyRigFinal:rightIndexEdge
+    100134: DandelionFairyRigFinal:rightKnee
+    100136: DandelionFairyRigFinal:rightLegIK
+    100138: DandelionFairyRigFinal:rightMiddle1
+    100140: DandelionFairyRigFinal:rightMiddle2
+    100142: DandelionFairyRigFinal:rightMiddleEdge
+    100144: DandelionFairyRigFinal:rightRing1
+    100146: DandelionFairyRigFinal:rightRing2
+    100148: DandelionFairyRigFinal:rightRingEdge
+    100150: DandelionFairyRigFinal:rightShoulder
+    100152: DandelionFairyRigFinal:rightSmall1
+    100154: DandelionFairyRigFinal:rightSmall1 1
+    100156: DandelionFairyRigFinal:rightSmallEdge
+    100158: DandelionFairyRigFinal:rightSmallEdge 1
+    100160: DandelionFairyRigFinal:rightThumb
+    100162: DandelionFairyRigFinal:rightThumbEdge
+    100164: DandelionFairyRigFinal:rigthtToeEdge
+    100166: DandelionFairyRigFinal:spinebase
+    100168: DandelionFairyRigFinal:spineMid
+    100170: //RootNode
+    100172: group1
+    100174: left
+    400000: DandelionFairyRigFinal:chest
+    400002: DandelionFairyRigFinal:dandelion
+    400004: DandelionFairyRigFinal:dandelion2:dandelion
+    400006: DandelionFairyRigFinal:dandelion2:group5
+    400008: DandelionFairyRigFinal:dandelion2:joint1
+    400010: DandelionFairyRigFinal:dandelion2:joint10
+    400012: DandelionFairyRigFinal:dandelion2:joint11
+    400014: DandelionFairyRigFinal:dandelion2:joint12
+    400016: DandelionFairyRigFinal:dandelion2:joint13
+    400018: DandelionFairyRigFinal:dandelion2:joint14
+    400020: DandelionFairyRigFinal:dandelion2:joint2
+    400022: DandelionFairyRigFinal:dandelion2:joint3
+    400024: DandelionFairyRigFinal:dandelion2:joint4
+    400026: DandelionFairyRigFinal:dandelion2:joint5
+    400028: DandelionFairyRigFinal:dandelion2:joint6
+    400030: DandelionFairyRigFinal:dandelion2:joint7
+    400032: DandelionFairyRigFinal:dandelion2:joint8
+    400034: DandelionFairyRigFinal:dandelion2:joint9
+    400036: DandelionFairyRigFinal:dandelion2:pSphere1
+    400038: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    400040: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL
+    400042: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    400044: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    400046: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    400048: DandelionFairyRigFinal:Dandelion_Fairies3:left
+    400050: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+    400052: DandelionFairyRigFinal:Hat1
+    400054: DandelionFairyRigFinal:Hat2
+    400056: DandelionFairyRigFinal:HatEdge
+    400058: DandelionFairyRigFinal:Head
+    400060: DandelionFairyRigFinal:left
+    400062: DandelionFairyRigFinal:leftAnkle
+    400064: DandelionFairyRigFinal:LeftEar
+    400066: DandelionFairyRigFinal:LeftEarEdge
+    400068: DandelionFairyRigFinal:leftElbow
+    400070: DandelionFairyRigFinal:leftFoot
+    400072: DandelionFairyRigFinal:leftHandIK
+    400074: DandelionFairyRigFinal:leftHip
+    400076: DandelionFairyRigFinal:leftIndex1
+    400078: DandelionFairyRigFinal:leftIndex2
+    400080: DandelionFairyRigFinal:leftIndexEdge
+    400082: DandelionFairyRigFinal:leftLegIK
+    400084: DandelionFairyRigFinal:leftMiddle1
+    400086: DandelionFairyRigFinal:leftMiddle2
+    400088: DandelionFairyRigFinal:leftMiddleEdge
+    400090: DandelionFairyRigFinal:leftRing1
+    400092: DandelionFairyRigFinal:leftRing2
+    400094: DandelionFairyRigFinal:leftRingEdge
+    400096: DandelionFairyRigFinal:leftShoulder
+    400098: DandelionFairyRigFinal:leftThumb
+    400100: DandelionFairyRigFinal:leftThumbEdge
+    400102: DandelionFairyRigFinal:lefttKnee
+    400104: DandelionFairyRigFinal:leftToeEdge
+    400106: DandelionFairyRigFinal:leftWrist
+    400108: DandelionFairyRigFinal:Neck
+    400110: DandelionFairyRigFinal:nurbsCircle1
+    400112: DandelionFairyRigFinal:rightAnkle
+    400114: DandelionFairyRigFinal:RightEar
+    400116: DandelionFairyRigFinal:RightEarEdge
+    400118: DandelionFairyRigFinal:rightElbow
+    400120: DandelionFairyRigFinal:rightFoot
+    400122: DandelionFairyRigFinal:rightHandIK_
+    400124: DandelionFairyRigFinal:rightHandWrist
+    400126: DandelionFairyRigFinal:rightHip
+    400128: DandelionFairyRigFinal:rightIndex1
+    400130: DandelionFairyRigFinal:rightIndex2
+    400132: DandelionFairyRigFinal:rightIndexEdge
+    400134: DandelionFairyRigFinal:rightKnee
+    400136: DandelionFairyRigFinal:rightLegIK
+    400138: DandelionFairyRigFinal:rightMiddle1
+    400140: DandelionFairyRigFinal:rightMiddle2
+    400142: DandelionFairyRigFinal:rightMiddleEdge
+    400144: DandelionFairyRigFinal:rightRing1
+    400146: DandelionFairyRigFinal:rightRing2
+    400148: DandelionFairyRigFinal:rightRingEdge
+    400150: DandelionFairyRigFinal:rightShoulder
+    400152: DandelionFairyRigFinal:rightSmall1
+    400154: DandelionFairyRigFinal:rightSmall1 1
+    400156: DandelionFairyRigFinal:rightSmallEdge
+    400158: DandelionFairyRigFinal:rightSmallEdge 1
+    400160: DandelionFairyRigFinal:rightThumb
+    400162: DandelionFairyRigFinal:rightThumbEdge
+    400164: DandelionFairyRigFinal:rigthtToeEdge
+    400166: DandelionFairyRigFinal:spinebase
+    400168: DandelionFairyRigFinal:spineMid
+    400170: //RootNode
+    400172: group1
+    400174: left
+    2300000: DandelionFairyRigFinal:dandelion2:dandelion
+    2300002: DandelionFairyRigFinal:dandelion2:group5
+    2300004: DandelionFairyRigFinal:dandelion2:pSphere1
+    3300000: DandelionFairyRigFinal:dandelion2:dandelion
+    3300002: DandelionFairyRigFinal:dandelion2:group5
+    3300004: DandelionFairyRigFinal:dandelion2:pSphere1
+    4300000: DandelionFairyRigFinal:dandelion2:dandelion
+    4300002: DandelionFairyRigFinal:dandelion2:pSphere1
+    4300004: DandelionFairyRigFinal:dandelion2:group5
+    4300006: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+    4300008: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    4300010: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    4300012: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    4300014: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    7400000: fly up
+    9500000: //RootNode
+    13700000: DandelionFairyRigFinal:Dandelion_Fairies3:body
+    13700002: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+    13700004: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+    13700006: DandelionFairyRigFinal:Dandelion_Fairies3:head
+    13700008: DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: fly up
+      takeName: Take 001
+      firstFrame: 80
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DandelionFairyRigFinal:chest
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftIndex1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftIndex1/DandelionFairyRigFinal:leftIndex2
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftIndex1/DandelionFairyRigFinal:leftIndex2/DandelionFairyRigFinal:leftIndexEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftMiddle1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftMiddle1/DandelionFairyRigFinal:leftMiddle2
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftMiddle1/DandelionFairyRigFinal:leftMiddle2/DandelionFairyRigFinal:leftMiddleEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftRing1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftRing1/DandelionFairyRigFinal:leftRing2
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftRing1/DandelionFairyRigFinal:leftRing2/DandelionFairyRigFinal:leftRingEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftThumb
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:leftThumb/DandelionFairyRigFinal:leftThumbEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:rightSmall1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:leftShoulder/DandelionFairyRigFinal:leftElbow/DandelionFairyRigFinal:leftWrist/DandelionFairyRigFinal:rightSmall1/DandelionFairyRigFinal:rightSmallEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head/DandelionFairyRigFinal:Hat1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head/DandelionFairyRigFinal:Hat1/DandelionFairyRigFinal:Hat2
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head/DandelionFairyRigFinal:Hat1/DandelionFairyRigFinal:Hat2/DandelionFairyRigFinal:HatEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head/DandelionFairyRigFinal:LeftEar
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head/DandelionFairyRigFinal:LeftEar/DandelionFairyRigFinal:LeftEarEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head/DandelionFairyRigFinal:RightEar
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:Neck/DandelionFairyRigFinal:Head/DandelionFairyRigFinal:RightEar/DandelionFairyRigFinal:RightEarEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightIndex1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightIndex1/DandelionFairyRigFinal:rightIndex2
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightIndex1/DandelionFairyRigFinal:rightIndex2/DandelionFairyRigFinal:rightIndexEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightMiddle1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightMiddle1/DandelionFairyRigFinal:rightMiddle2
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightMiddle1/DandelionFairyRigFinal:rightMiddle2/DandelionFairyRigFinal:rightMiddleEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightRing1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightRing1/DandelionFairyRigFinal:rightRing2
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightRing1/DandelionFairyRigFinal:rightRing2/DandelionFairyRigFinal:rightRingEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightSmall1
+          1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightSmall1
+          1/DandelionFairyRigFinal:rightSmallEdge 1
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightThumb
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:rightShoulder/DandelionFairyRigFinal:rightElbow/DandelionFairyRigFinal:rightHandWrist/DandelionFairyRigFinal:rightThumb/DandelionFairyRigFinal:rightThumbEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:leftHip
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:leftHip/DandelionFairyRigFinal:lefttKnee
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:leftHip/DandelionFairyRigFinal:lefttKnee/DandelionFairyRigFinal:leftAnkle
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:leftHip/DandelionFairyRigFinal:lefttKnee/DandelionFairyRigFinal:leftAnkle/DandelionFairyRigFinal:leftFoot
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:leftHip/DandelionFairyRigFinal:lefttKnee/DandelionFairyRigFinal:leftAnkle/DandelionFairyRigFinal:leftFoot/DandelionFairyRigFinal:leftToeEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:rightHip
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:rightHip/DandelionFairyRigFinal:rightKnee
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:rightHip/DandelionFairyRigFinal:rightKnee/DandelionFairyRigFinal:rightAnkle
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:rightHip/DandelionFairyRigFinal:rightKnee/DandelionFairyRigFinal:rightAnkle/DandelionFairyRigFinal:rightFoot
+        weight: 1
+      - path: DandelionFairyRigFinal:chest/DandelionFairyRigFinal:spineMid/DandelionFairyRigFinal:spinebase/DandelionFairyRigFinal:rightHip/DandelionFairyRigFinal:rightKnee/DandelionFairyRigFinal:rightAnkle/DandelionFairyRigFinal:rightFoot/DandelionFairyRigFinal:rigthtToeEdge
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:dandelion
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:group5
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7/DandelionFairyRigFinal:dandelion2:joint8
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7/DandelionFairyRigFinal:dandelion2:joint8/DandelionFairyRigFinal:dandelion2:joint9
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7/DandelionFairyRigFinal:dandelion2:joint8/DandelionFairyRigFinal:dandelion2:joint9/DandelionFairyRigFinal:dandelion2:joint10
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7/DandelionFairyRigFinal:dandelion2:joint8/DandelionFairyRigFinal:dandelion2:joint9/DandelionFairyRigFinal:dandelion2:joint10/DandelionFairyRigFinal:dandelion2:joint11
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7/DandelionFairyRigFinal:dandelion2:joint8/DandelionFairyRigFinal:dandelion2:joint9/DandelionFairyRigFinal:dandelion2:joint10/DandelionFairyRigFinal:dandelion2:joint11/DandelionFairyRigFinal:dandelion2:joint12
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7/DandelionFairyRigFinal:dandelion2:joint8/DandelionFairyRigFinal:dandelion2:joint9/DandelionFairyRigFinal:dandelion2:joint10/DandelionFairyRigFinal:dandelion2:joint11/DandelionFairyRigFinal:dandelion2:joint12/DandelionFairyRigFinal:dandelion2:joint13
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:joint1/DandelionFairyRigFinal:dandelion2:joint2/DandelionFairyRigFinal:dandelion2:joint3/DandelionFairyRigFinal:dandelion2:joint4/DandelionFairyRigFinal:dandelion2:joint5/DandelionFairyRigFinal:dandelion2:joint6/DandelionFairyRigFinal:dandelion2:joint7/DandelionFairyRigFinal:dandelion2:joint8/DandelionFairyRigFinal:dandelion2:joint9/DandelionFairyRigFinal:dandelion2:joint10/DandelionFairyRigFinal:dandelion2:joint11/DandelionFairyRigFinal:dandelion2:joint12/DandelionFairyRigFinal:dandelion2:joint13/DandelionFairyRigFinal:dandelion2:joint14
+        weight: 1
+      - path: DandelionFairyRigFinal:dandelion/DandelionFairyRigFinal:dandelion2:pSphere1
+        weight: 1
+      - path: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL
+        weight: 1
+      - path: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL/DandelionFairyRigFinal:Dandelion_Fairies3:body
+        weight: 1
+      - path: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL/DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
+        weight: 1
+      - path: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL/DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
+        weight: 1
+      - path: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL/DandelionFairyRigFinal:Dandelion_Fairies3:head
+        weight: 1
+      - path: DandelionFairyRigFinal:Dandelion_Fairies3:Faries_MDL/DandelionFairyRigFinal:Dandelion_Fairies3:neck_cloth
+        weight: 1
+      - path: DandelionFairyRigFinal:Dandelion_Fairies3:left
+        weight: 1
+      - path: DandelionFairyRigFinal:left
+        weight: 1
+      - path: DandelionFairyRigFinal:leftHandIK
+        weight: 1
+      - path: DandelionFairyRigFinal:leftLegIK
+        weight: 1
+      - path: DandelionFairyRigFinal:nurbsCircle1
+        weight: 1
+      - path: DandelionFairyRigFinal:rightHandIK_
+        weight: 1
+      - path: DandelionFairyRigFinal:rightLegIK
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: left
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

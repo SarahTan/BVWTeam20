@@ -134,67 +134,69 @@ public class SoundManager : MonoBehaviour {
 
 	//Dialogs
 	public void dialog01AHello(){
-		StartCoroutine(dialogPlay(0,0.5f));
+		StartCoroutine(dialogPlay(0,0.35f));
 	}
 
 	public void dialog01BTurnAroundLookAtMe(){
-		StartCoroutine(dialogPlay(1,0.5f));
+		StartCoroutine(dialogPlay(1,0.35f));
 	}
 
 	public void dialog02LetsGo2SP(){
-		StartCoroutine(dialogPlay(2,0.5f));
+		StartCoroutine(dialogPlay(2,0.35f));
 	}
 
 	public void dialog03AUseDandelion2Fly(){
-		StartCoroutine(dialogPlay(3,0.5f));
+		StartCoroutine(dialogPlay(3,0.35f));
 	}
 
 	public void dialog03BComeOnWait4U(){
-		StartCoroutine(dialogPlay(4,0.7f));
+		StartCoroutine(dialogPlay(4,0.55f));
 	}
 
 	public void dialog03CHurryUp4lowMe(){
-		StartCoroutine(dialogPlay(5,0.7f));
+		StartCoroutine(dialogPlay(5,0.55f));
 	}
 
 	public void dialog04TurnRight(){
-		StartCoroutine(dialogPlay(6,0.7f));
+		StartCoroutine(dialogPlay(6,0.55f));
 	}
 
 	public void dialog05GJOnReachStart(){
-		StartCoroutine(dialogPlay(7,0.5f));
+		StartCoroutine(dialogPlay(7,0.35f));
 	}
 
 	public void dialog06NowLetsStartRaceReady321(){
-		StartCoroutine(dialogPlay(8,0.5f));
+		StartCoroutine(dialogPlay(8,0.35f));
 	}
 
 	public void dialog07Go(){
-		StartCoroutine(dialogPlay(9,0.5f));
+		StartCoroutine(dialogPlay(9,0.35f));
 	}
 
 	public void dialog08Congra(){
-		StartCoroutine(dialogPlay(10,0.8f));
+		StartCoroutine(dialogPlay(10,0.55f));
 	}
 
 	public void dialog09A1st(){
-		StartCoroutine(dialogPlay(11,1f));
+		StartCoroutine(dialogPlay(11,0.6f));
 	}
 
 	public void dialog09B2nd(){
-		StartCoroutine(dialogPlay(12,1f));
+		StartCoroutine(dialogPlay(12,0.6f));
 	}
 
 	public void dialog09C3rd(){
-		StartCoroutine(dialogPlay(13,1f));
+		StartCoroutine(dialogPlay(13,0.6f));
 	}
 
 	IEnumerator dialogPlay(int dialogNum,float dialogVol){
-		while(fellowDialog.isPlaying)
-			yield return new WaitForSeconds(Time.deltaTime);
+		while (fellowDialog.isPlaying) {
+			yield return new WaitForSeconds (Time.deltaTime);
+		}
 		fellowDialog.clip = dialogTutorial [dialogNum];
 		fellowDialog.volume = dialogVol;
 		fellowDialog.Play ();
+		Debug.Log (fellowDialog.clip);
 		yield return null;
 	}
 
