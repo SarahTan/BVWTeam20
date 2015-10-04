@@ -53,15 +53,14 @@ public class GameManager : MonoBehaviour {
 		// play fairies talking and ready, 3 2 1 audio
 		soundManager.dialog05GJOnReachStart ();
 		soundManager.dialog06NowLetsStartRaceReady321 ();
-
+		
+		player.GetComponent<PlayerController> ().RaceStart ();
+		soundManager.dialog07Go ();
 		GameObject[] aiFairies = GameObject.FindGameObjectsWithTag("RaceFairy");
+		yield return new WaitForSeconds (9f);
 		foreach(GameObject fairy in aiFairies){
 			fairy.GetComponent<RaceFairyAI>().enabled = true;
 		}
-		player.GetComponent<PlayerController> ().RaceStart ();
-		soundManager.dialog07Go ();
-
-		yield return new WaitForSeconds (9f);
 		soundManager.raceThemeStart ();
 	}
 
@@ -73,7 +72,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator RaceEndSeq () {
-		Debug.Log ("Race end sequence");
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
@@ -91,6 +89,16 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForEndOfFrame();
 		}
 
+		yield return new WaitForSeconds (3f);
+		soundManager.dialog08Congra ();
+		if (endPosition == 1) {
+			soundManager.dialog09A1st ();
+		} else if (endPosition == 2) {
+			soundManager.dialog09B2nd ();
+		}
+		else{
+			soundManager.dialog09C3rd();
+		}
 		// play audio/anim
 		//soundManager.dialog08Congra ();
 	}
