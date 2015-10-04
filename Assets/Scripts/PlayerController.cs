@@ -49,9 +49,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionStay (Collision collision) {
-		if (collision.gameObject.tag == "Obstacle") {
+		if (collision.gameObject.layer == 9) {
 			// play crashing sound
-
+			Debug.Log("CRASH!");
 		}
 
 		if (Time.time > initialTime + transitionTime) {
