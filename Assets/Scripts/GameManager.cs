@@ -6,12 +6,15 @@ public class GameManager : MonoBehaviour {
 
 	public Image fadeToBlack;
 	public GameObject player;
+	public GameObject guide;
 	public GameObject startPos;	
 	public GameObject endPos;
 	public GameObject ovrCam;
 	public SoundManager soundManager;
 
 	int endPosition;
+	float raceStartTime;
+	float timeTaken;
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator RaceStartSeq () {
 		Debug.Log ("Race start sequence");
+		guide.GetComponent<FairyGuideController> ().DeactivateGuide ();
+
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
@@ -53,16 +58,17 @@ public class GameManager : MonoBehaviour {
 		// play fairies talking and ready, 3 2 1 audio
 		soundManager.dialog05GJOnReachStart ();
 		soundManager.dialog06NowLetsStartRaceReady321 ();
+		soundManager.dialog07Go ();
+		yield return new WaitForSeconds (9f);
 
 		GameObject[] aiFairies = GameObject.FindGameObjectsWithTag("RaceFairy");
 		foreach(GameObject fairy in aiFairies){
 			fairy.GetComponent<RaceFairyAI>().enabled = true;
 		}
+		soundManager.raceThemeStart ();		
 		player.GetComponent<PlayerController> ().RaceStart ();
-		soundManager.dialog07Go ();
-
-		yield return new WaitForSeconds (9f);
-		soundManager.raceThemeStart ();
+		raceStartTime = Time.time;
+		Debug.Log (raceStartTime);
 	}
 
 	public void RaceEnd (int position) {
@@ -73,7 +79,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator RaceEndSeq () {
+		timeTaken = Time.time - raceStartTime;
 		Debug.Log ("Race end sequence");
+
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
@@ -90,6 +98,18 @@ public class GameManager : MonoBehaviour {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
+
+		yield return new WaitForSeconds (3f);
+		soundManager.dialog08Congra ();
+		if(endPosition == 1) {
+			soundManager.dialog09A1st ();
+		} else if (endPosition == 2) {
+			soundManager.dialog09B2nd ();
+		}
+		else {
+			soundManager.dialog09C3rd();
+		}
+
 
 		// play audio/anim
 		//soundManager.dialog08Congra ();

@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour {
 	float transitionTime = 1f;
 	float initialTime;
 	float normalSpeed;
-
-	bool playerInControl = true;
+	bool tutorialDone = false;
+	bool playerInControl = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -49,9 +49,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionStay (Collision collision) {
-		if (collision.gameObject.tag == "Obstacle") {
+		if (collision.gameObject.layer == 9) {
 			// play crashing sound
-
+			Debug.Log("CRASH!");
 		}
 
 		if (Time.time > initialTime + transitionTime) {
@@ -78,8 +78,9 @@ public class PlayerController : MonoBehaviour {
 			// play sound which lasts 2-3s
 
 			Invoke ("ResumeNormalSpeed", 3f);	// invoke immediately after sound ends
-		} else if (other.gameObject.name == "StartCollider") {
+		} else if (other.gameObject.name == "StartCollider" && !tutorialDone) {
 			playerInControl = false;
+			tutorialDone = true;
 			gameManager.RaceStart();
 			rb.velocity = (startPos.position - transform.position).normalized * speed;
 
@@ -90,6 +91,13 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	public void GuideDoneTalking () {
+		Invoke ("GiveControlBack", 1f);
+	}
+
+	void GiveControlBack () {
+		playerInControl = true;
+	}
 	
 	public void RaceStart () {
 		speed = 8f;
