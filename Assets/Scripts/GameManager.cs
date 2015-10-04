@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
 	}
 	public void Flash()
 	{
+		Debug.Log ("here");
 		if (numoftimes % 2 == 0) {
 			treehouseMat.shader = shader1;
 			treeMat.shader = shader1;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour {
 			treeMat.shader = shader2;
 			treehouseMat.shader = shader2;
 		}
+		numoftimes++;
 	}
 
 	IEnumerator RaceStartSeq () {
@@ -72,12 +74,7 @@ public class GameManager : MonoBehaviour {
 		
 		soundManager.mainThemeStop ();
 		// flash treehouse
-
-		while (numoftimes < 20) {
-			InvokeRepeating ("Flash", 1, 0.5F);
-			numoftimes++;
-			yield return new WaitForSeconds(0.2f);
-		}
+		InvokeRepeating ("Flash", 1, 0.5F);
 		treehouseMat.shader = shader2;
 
 		// play fairies talking and ready, 3 2 1 audio
@@ -95,6 +92,8 @@ public class GameManager : MonoBehaviour {
 		raceStartTime = Time.time;
 		Debug.Log (raceStartTime);
 	}
+
+
 
 	public void RaceEnd (int position) {
 		Debug.Log ("Ending Game");

@@ -59,6 +59,7 @@ public class FairyGuideController : MonoBehaviour {
 					yield return new WaitForSeconds(1f);	
 				}
 				rb.velocity = currentVel;
+				fairydust.SetActive(true);
 			}
 			yield return new WaitForSeconds(separationCooldown);
 		}
