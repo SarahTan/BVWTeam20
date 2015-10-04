@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour {
 		shader1 = Shader.Find("Diffuse");
 		shader2 = Shader.Find("Self-Illumin/Diffuse");
 		times = 0;
-		
 	}
 	
 	// Update is called once per frame
