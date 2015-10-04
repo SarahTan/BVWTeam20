@@ -1,0 +1,126 @@
+fileFormatVersion: 2
+guid: 5e9110399320d904896ac789d674308c
+timeCreated: 1443995335
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: group
+    100002: pasted__leaf
+    100004: pasted__leaf1
+    100006: pasted__leaf2
+    100008: pasted__leaf3
+    100010: pasted__leaf4
+    100012: pasted__leaf5
+    100014: pasted__leaf6
+    100016: pasted__Leaves
+    100018: polySurface1
+    100020: polySurface2
+    100022: Tree_Dry_1:Tree_Dry_1
+    100024: //RootNode
+    400000: group
+    400002: pasted__leaf
+    400004: pasted__leaf1
+    400006: pasted__leaf2
+    400008: pasted__leaf3
+    400010: pasted__leaf4
+    400012: pasted__leaf5
+    400014: pasted__leaf6
+    400016: pasted__Leaves
+    400018: polySurface1
+    400020: polySurface2
+    400022: Tree_Dry_1:Tree_Dry_1
+    400024: //RootNode
+    2300000: pasted__leaf
+    2300002: pasted__leaf1
+    2300004: pasted__leaf2
+    2300006: pasted__leaf3
+    2300008: pasted__leaf4
+    2300010: pasted__leaf5
+    2300012: pasted__leaf6
+    2300014: polySurface1
+    2300016: polySurface2
+    2300018: Tree_Dry_1:Tree_Dry_1
+    3300000: pasted__leaf
+    3300002: pasted__leaf1
+    3300004: pasted__leaf2
+    3300006: pasted__leaf3
+    3300008: pasted__leaf4
+    3300010: pasted__leaf5
+    3300012: pasted__leaf6
+    3300014: polySurface1
+    3300016: polySurface2
+    3300018: Tree_Dry_1:Tree_Dry_1
+    4300000: Tree_Dry_1:Tree_Dry_1
+    4300002: pasted__leaf
+    4300004: pasted__leaf1
+    4300006: pasted__leaf2
+    4300008: pasted__leaf3
+    4300010: pasted__leaf4
+    4300012: pasted__leaf5
+    4300014: pasted__leaf6
+    4300016: polySurface1
+    4300018: polySurface2
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
