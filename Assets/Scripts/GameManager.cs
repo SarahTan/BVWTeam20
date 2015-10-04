@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour {
 	public GameObject endPos;
 	public GameObject ovrCam;
 	public SoundManager soundManager;
+	private int numoftimes;
+	Shader shader1;
+	Shader shader2;
+	public Material treehouseMat;
+	public Material treeMat;
 
 	int endPosition;
 	float raceStartTime;
@@ -19,6 +24,9 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		soundManager.mainThemeStart ();
+		numoftimes = 0;
+		shader1 = Shader.Find("Diffuse");
+		shader2 = Shader.Find("Self-Illumin/Diffuse");
 	}
 	
 	// Update is called once per frame
@@ -29,6 +37,16 @@ public class GameManager : MonoBehaviour {
 	public void RaceStart () {
 		StopAllCoroutines ();
 		StartCoroutine ("RaceStartSeq");
+	}
+	public void Flash()
+	{
+		if (numoftimes % 2 == 0) {
+			treehouseMat.shader = shader1;
+			treeMat.shader = shader1;
+		} else {
+			treeMat.shader = shader2;
+			treehouseMat.shader = shader2;
+		}
 	}
 
 	IEnumerator RaceStartSeq () {
@@ -54,6 +72,13 @@ public class GameManager : MonoBehaviour {
 		
 		soundManager.mainThemeStop ();
 		// flash treehouse
+
+		while (numoftimes < 20) {
+			InvokeRepeating ("Flash", 1, 0.5F);
+			numoftimes++;
+			yield return new WaitForSeconds(0.2f);
+		}
+		treehouseMat.shader = shader2;
 
 		// play fairies talking and ready, 3 2 1 audio
 		soundManager.dialog05GJOnReachStart ();
@@ -100,17 +125,18 @@ public class GameManager : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds (3f);
-		soundManager.dialog08Congra ();
 		if(endPosition == 1) {
+			soundManager.dialog08Congra ();
 			soundManager.dialog09A1st ();
 		} else if (endPosition == 2) {
+			soundManager.dialog08Congra ();
 			soundManager.dialog09B2nd ();
 		}
-		else {
+		else if (endPosition == 3) {
+			soundManager.dialog08Congra ();
 			soundManager.dialog09C3rd();
 		}
-
-
+		
 		// play audio/anim
 		//soundManager.dialog08Congra ();
 	}
