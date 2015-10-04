@@ -125,17 +125,18 @@ public class GameManager : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds (3f);
-		soundManager.dialog08Congra ();
 		if(endPosition == 1) {
+			soundManager.dialog08Congra ();
 			soundManager.dialog09A1st ();
 		} else if (endPosition == 2) {
+			soundManager.dialog08Congra ();
 			soundManager.dialog09B2nd ();
 		}
-		else {
+		else if (endPosition == 3) {
+			soundManager.dialog08Congra ();
 			soundManager.dialog09C3rd();
 		}
-
-
+		
 		// play audio/anim
 		//soundManager.dialog08Congra ();
 	}
