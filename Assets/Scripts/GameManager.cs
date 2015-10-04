@@ -7,8 +7,12 @@ public class GameManager : MonoBehaviour {
 	public Image fadeToBlack;
 	public GameObject player;
 	public GameObject startPos;
+	public GameObject endPos;
 	public GameObject ovrCam;
-	
+	public Canvas gameOverText;
+
+	int endPosition;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -56,19 +60,25 @@ public class GameManager : MonoBehaviour {
 		player.GetComponent<PlayerController> ().RaceStart ();
 	}
 
-	public void RaceEnd () {
+	public void RaceEnd (int position) {
+		Debug.Log ("Ending Game");
 		StopAllCoroutines();
-		StartCoroutine("RaceEnd");
+		endPosition = position;
+		StartCoroutine("RaceEndSeq");
 	}
 
 	IEnumerator RaceEndSeq () {
-		Debug.Log ("Race end sequence");
+	
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
 
-		// move player to end spot
+		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		player.transform.position = endPos.transform.position;
+		gameOverText.enabled = true;
+		Text txt = GameObject.FindGameObjectWithTag ("GameOverText");
+		txt.text += endPosition;
 
 		while (fadeToBlack.color.a > 0.05f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
