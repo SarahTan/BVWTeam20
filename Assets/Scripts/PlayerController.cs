@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 			rb.velocity = (startPos.position - transform.position).normalized * speed;
 
 		} else if (other.gameObject.name == "Endgame Collider") {
-			Debug.Log ("GAME FINISHED");
+			gameManager.RaceEnd();
 		}
 	}
 
