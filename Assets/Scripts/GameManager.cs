@@ -49,7 +49,10 @@ public class GameManager : MonoBehaviour {
 		// play fairies talking and ready, 3 2 1 audio
 
 		// play GO! audio
-
+		GameObject[] aiFairies = GameObject.FindGameObjectsWithTag("RaceFairy");
+		foreach(GameObject fairy in aiFairies){
+			fairy.GetComponent<RaceFairyAI>().enabled = true;
+		}
 		player.GetComponent<PlayerController> ().RaceStart ();
 	}
 

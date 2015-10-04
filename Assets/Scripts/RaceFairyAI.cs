@@ -24,7 +24,7 @@ public class RaceFairyAI : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 
-		if(collision.gameObject.tag == "AIFairyEndGame"){
+		if(collision.gameObject.tag == "AIFairyEndGame" || collision.gameObject.tag == "EndGameTracker"){
 			Destroy (this.gameObject);
 		}
 		if (inCollision) {
