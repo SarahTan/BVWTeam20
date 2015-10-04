@@ -195,6 +195,7 @@ ModelImporter:
     4300014: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
     7400000: wave hand
     9500000: //RootNode
+    11100000: //RootNode
     13700000: DandelionFairyRigFinal:Dandelion_Fairies3:body
     13700002: DandelionFairyRigFinal:Dandelion_Fairies3:hat_ball
     13700004: DandelionFairyRigFinal:Dandelion_Fairies3:hat_body
@@ -213,7 +214,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 	public SoundManager soundManager;
 
 	int endPosition;
+	float raceStartTime;
+	float timeTaken;
 
 	// Use this for initialization
 	void Start () {
@@ -65,6 +67,8 @@ public class GameManager : MonoBehaviour {
 		}
 		soundManager.raceThemeStart ();		
 		player.GetComponent<PlayerController> ().RaceStart ();
+		raceStartTime = Time.time;
+		Debug.Log (raceStartTime);
 	}
 
 	public void RaceEnd (int position) {
@@ -75,7 +79,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator RaceEndSeq () {
+		timeTaken = Time.time - raceStartTime;
 		Debug.Log ("Race end sequence");
+
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
