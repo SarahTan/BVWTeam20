@@ -74,8 +74,8 @@ public class GameManager : MonoBehaviour {
 		
 		soundManager.mainThemeStop ();
 		// flash treehouse
-		InvokeRepeating ("Flash", 1, 0.5F);
-		treehouseMat.shader = shader2;
+		//InvokeRepeating ("Flash", 1, 0.5F);
+		//treehouseMat.shader = shader2;
 
 		// play fairies talking and ready, 3 2 1 audio
 		soundManager.dialog05GJOnReachStart ();

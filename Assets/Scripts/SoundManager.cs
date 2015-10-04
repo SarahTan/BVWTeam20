@@ -10,15 +10,19 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource title;
 	public AudioSource bgmMain;
 	public AudioSource bgmRise;
+	public AudioSource bgmEnding; 
 	public AudioSource fellowDialog;
+	public AudioSource sfxCrash;
+	public AudioSource sfxWaterfall;
+	public AudioSource sfxCoin;
 
 
 	public AudioClip bgmRace;
+	public AudioClip bgmEndingWin;
+	public AudioClip bgmEndingLose;
+	public AudioClip sfxReach;
 
 	public AudioClip[] dialogTutorial;
-
-	public AudioClip sfxCrashTree;
-	public AudioClip sfxCrashSpiderWeb;
 
 	bool isRising = false;
 	bool isFalling = false;
@@ -36,7 +40,6 @@ public class SoundManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		//test
 		if (Input.GetKeyDown ("up"))	RisingMusicStart ();
 		if (Input.GetKeyDown ("down"))	FallingMusicStart ();
@@ -45,8 +48,11 @@ public class SoundManager : MonoBehaviour {
 		if (Input.GetKeyDown ("n"))	mainThemeStart ();
 		if (Input.GetKeyDown ("r"))	raceThemeStart ();
 		if (Input.GetKeyDown ("e"))	raceThemeStop ();
+		if (Input.GetKeyDown ("c"))	SFXCrash ();
+		if (Input.GetKeyDown ("x"))	SFXCoin ();
 
-
+		if (Input.GetKeyDown ("w"))	endWin ();
+		if (Input.GetKeyDown ("l"))	endLose ();
 
 		if (Input.GetKeyDown ("0")) titleMusicStart ();
 		if (Input.GetKeyDown ("1")) {
@@ -100,6 +106,9 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void raceThemeStop(){
+		sfxCrash.clip = sfxReach;
+		sfxCrash.Play ();
+
 		StartCoroutine(MusicFadeOut (bgmMain,1f));
 		StartCoroutine(MusicFadeOut (bgmRise,1f));
 	}
@@ -131,6 +140,26 @@ public class SoundManager : MonoBehaviour {
 		FallingMusicStop ();
 	}
 
+	public void endWin(){
+		bgmEnding.clip = bgmEndingWin;
+		bgmEnding.Play ();
+	}
+
+	public void endLose(){
+		bgmEnding.clip = bgmEndingLose;
+		bgmEnding.Play ();
+	}
+
+	//sfx
+	public void SFXCrash (){
+		sfxCrash.volume = 1f;
+		sfxCrash.Play ();
+	}
+
+	public void SFXCoin(){
+		sfxCoin.volume = 0.7f;
+		sfxCoin.Play ();
+	}
 
 	//Dialogs
 	public void dialog01AHello(){
@@ -146,7 +175,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void dialog03AUseDandelion2Fly(){
-		StartCoroutine(dialogPlay(3,0.35f));
+		StartCoroutine(dialogPlay(3,0.5f));
 	}
 
 	public void dialog03BComeOnWait4U(){
@@ -199,7 +228,6 @@ public class SoundManager : MonoBehaviour {
 		Debug.Log (fellowDialog.clip);
 		yield return null;
 	}
-
 
 
 	//AudioManager

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public SetDirection setDirection;
 	public Transform startPos;
 	public GameManager gameManager;
+	public SoundManager soundManager;
 
 	Rigidbody rb;
 	float speed = 3f;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour {
 		if (collision.gameObject.layer == 9) {
 			// play crashing sound
 			Debug.Log("CRASH!");
+			soundManager.SFXCrash();
 		}
 
 		if (Time.time > initialTime + transitionTime) {
