@@ -7,8 +7,8 @@ public class RaceFairyAI : MonoBehaviour {
 	Animator animator;
 	Rigidbody rb;
 	bool inCollision;
-	public Vector3 originalVelocity = new Vector3(0f, 1f, 5f);
-	public Vector3 collisionVector = new Vector3(3f, 0, 0);
+	public Vector3 originalVelocity;
+	public Vector3 collisionVector;
 	//Vector3 originalVelocity;
 
 	// Use this for initialization
@@ -18,13 +18,16 @@ public class RaceFairyAI : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		animator.SetBool ("isFlying", true);
 		rb.velocity = originalVelocity;
-		Debug.Log ("Original velocity is " + rb.velocity);
 		inCollision = false;
 	}
 
 	void OnCollisionEnter (Collision collision) {
 
-		if(collision.gameObject.tag == "AIFairyEndGame"){
+		//AI Fairies colliding with celing and turning randomly. Hacking a solution for now
+		if (collision.gameObject.name == "Ceiling") {
+			return;
+		}
+		if(collision.gameObject.tag == "AIFairyEndGame" || collision.gameObject.tag == "EndGameTracker"){
 			Destroy (this.gameObject);
 		}
 		if (inCollision) {
@@ -32,8 +35,14 @@ public class RaceFairyAI : MonoBehaviour {
 		}
 		inCollision = true;
 		rb.velocity = collisionVector;
-		Debug.Log ("In collision. Setting velocity to " + rb.velocity);
 		Invoke ("restoreOriginalVelocity", timeLagAfterCollision);
+	}
+
+	void OnTriggerEnter (Collider collider) {
+		
+		if(collider.tag == "AIFairyEndGame" || collider.tag == "EndGameTracker"){
+			Destroy (this.gameObject);
+		}
 	}
 
 	void restoreOriginalVelocity(){
@@ -43,11 +52,9 @@ public class RaceFairyAI : MonoBehaviour {
 			rb.velocity = collisionVector;
 			Invoke ("restoreOriginalVelocity", timeLagAfterCollision);
 		}
-		Debug.Log ("Restoring velocity to " + rb.velocity);
 	}
 
 	void OnCollisionExit (Collision collision) {
 		inCollision = false;
-		Debug.Log ("Exiting collision. Velocity is " + rb.velocity);
 	}
 }

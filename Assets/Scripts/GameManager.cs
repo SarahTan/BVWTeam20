@@ -6,23 +6,22 @@ public class GameManager : MonoBehaviour {
 
 	public Image fadeToBlack;
 	public GameObject player;
-	public GameObject startPos;
+	public GameObject guide;
+	public GameObject startPos;	
+	public GameObject endPos;
 	public GameObject ovrCam;
-	public Shader shader1;
-	public Shader shader2;
-	public Material tree_material;
-	public Material tree_material2;
-	private int times;
+	public SoundManager soundManager;
+
+	int endPosition;
+
 	// Use this for initialization
 	void Start () {
-		shader1 = Shader.Find("Diffuse");
-		shader2 = Shader.Find("Self-Illumin/Diffuse");
-		times = 0;
+		soundManager.mainThemeStart ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public void RaceStart () {
@@ -32,6 +31,8 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator RaceStartSeq () {
 		Debug.Log ("Race start sequence");
+		guide.GetComponent<FairyGuideController> ().DeactivateGuide ();
+
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
@@ -40,7 +41,6 @@ public class GameManager : MonoBehaviour {
 		// move player to start and face the treehouse
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		player.transform.position = startPos.transform.position;
-		Debug.Log (player.transform.position);
 		player.transform.forward = Vector3.forward;
 		ovrCam.transform.rotation = Quaternion.identity;
 		yield return new WaitForSeconds (0.5f);
@@ -49,34 +49,29 @@ public class GameManager : MonoBehaviour {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
-
+		
+		soundManager.mainThemeStop ();
 		// flash treehouse
 
-		InvokeRepeating("Flash", 2, 0.1F);
 		// play fairies talking and ready, 3 2 1 audio
+		soundManager.dialog05GJOnReachStart ();
+		soundManager.dialog06NowLetsStartRaceReady321 ();
+		soundManager.dialog07Go ();
+		yield return new WaitForSeconds (9f);
 
-		// play GO! audio
-
+		GameObject[] aiFairies = GameObject.FindGameObjectsWithTag("RaceFairy");
+		foreach(GameObject fairy in aiFairies){
+			fairy.GetComponent<RaceFairyAI>().enabled = true;
+		}
+		soundManager.raceThemeStart ();		
 		player.GetComponent<PlayerController> ().RaceStart ();
 	}
 
-	public void RaceEnd () {
+	public void RaceEnd (int position) {
+		Debug.Log ("Ending Game");
 		StopAllCoroutines();
-		StartCoroutine("RaceEnd");
-	}
-	public void Flash()
-	{
-
-		if (times < 20) {
-			tree_material.shader = shader1;
-			tree_material2.shader = shader1;
-			if(times%2==0)
-				shader1 = Shader.Find("Self-Illumin/Diffuse");
-			else
-				shader1 = Shader.Find("Diffuse");
-			//yield return new WaitForSeconds(0.2f);
-			times++;
-		}
+		endPosition = position;
+		StartCoroutine("RaceEndSeq");
 	}
 
 	IEnumerator RaceEndSeq () {
@@ -87,13 +82,30 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// move player to end spot
+		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		player.transform.position = endPos.transform.position;
+		//gameOverText.enabled = true;
+		//Text txt = GameObject.FindGameObjectWithTag ("GameOverText");
+		//txt.text += endPosition;
 
 		while (fadeToBlack.color.a > 0.05f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
 
-		// play audio/anim
+		yield return new WaitForSeconds (3f);
+		soundManager.dialog08Congra ();
+		if(endPosition == 1) {
+			soundManager.dialog09A1st ();
+		} else if (endPosition == 2) {
+			soundManager.dialog09B2nd ();
+		}
+		else {
+			soundManager.dialog09C3rd();
+		}
 
+
+		// play audio/anim
+		//soundManager.dialog08Congra ();
 	}
 }

@@ -7,16 +7,19 @@ public class SoundManager : MonoBehaviour {
 
 	public GameObject player;
 
+	public AudioSource title;
 	public AudioSource bgmMain;
 	public AudioSource bgmRise;
+	public AudioSource fellowDialog;
 
 
 	public AudioClip bgmRace;
 
-	public AudioClip crashIntoTreeSFX;
-	public AudioClip crashIntoSpiderWebSFX;
+	public AudioClip[] dialogTutorial;
 
-	 
+	public AudioClip sfxCrashTree;
+	public AudioClip sfxCrashSpiderWeb;
+
 	bool isRising = false;
 	bool isFalling = false;
 
@@ -28,7 +31,7 @@ public class SoundManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 //		Debug.Log("Sound Manager start working");
-		mainThemeStart ();
+//		mainThemeStart ();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +45,36 @@ public class SoundManager : MonoBehaviour {
 		if (Input.GetKeyDown ("n"))	mainThemeStart ();
 		if (Input.GetKeyDown ("r"))	raceThemeStart ();
 		if (Input.GetKeyDown ("e"))	raceThemeStop ();
+
+
+
+		if (Input.GetKeyDown ("0")) titleMusicStart ();
+		if (Input.GetKeyDown ("1")) {
+			dialog01AHello ();
+			dialog01BTurnAroundLookAtMe ();
+		}
+		if (Input.GetKeyDown ("2")) dialog02LetsGo2SP ();
+		if (Input.GetKeyDown ("3")) {
+			dialog03AUseDandelion2Fly ();
+			dialog03BComeOnWait4U ();
+			dialog03CHurryUp4lowMe();
+		}
+		if (Input.GetKeyDown ("4")) dialog04TurnRight ();
+		if (Input.GetKeyDown ("5")) {
+			dialog05GJOnReachStart ();
+			dialog06NowLetsStartRaceReady321 ();
+			dialog07Go ();
+		}
+		if (Input.GetKeyDown ("6")) {
+			dialog08Congra ();
+			dialog09A1st ();
+			dialog09B2nd ();
+			dialog09C3rd ();
+		}
+	}
+
+	public void titleMusicStart(){
+		title.Play ();
 	}
 
 	public void mainThemeStart(){
@@ -98,6 +131,74 @@ public class SoundManager : MonoBehaviour {
 		FallingMusicStop ();
 	}
 
+
+	//Dialogs
+	public void dialog01AHello(){
+		StartCoroutine(dialogPlay(0,0.35f));
+	}
+
+	public void dialog01BTurnAroundLookAtMe(){
+		StartCoroutine(dialogPlay(1,0.35f));
+	}
+
+	public void dialog02LetsGo2SP(){
+		StartCoroutine(dialogPlay(2,0.35f));
+	}
+
+	public void dialog03AUseDandelion2Fly(){
+		StartCoroutine(dialogPlay(3,0.35f));
+	}
+
+	public void dialog03BComeOnWait4U(){
+		StartCoroutine(dialogPlay(4,0.55f));
+	}
+
+	public void dialog03CHurryUp4lowMe(){
+		StartCoroutine(dialogPlay(5,0.55f));
+	}
+
+	public void dialog04TurnRight(){
+		StartCoroutine(dialogPlay(6,0.55f));
+	}
+
+	public void dialog05GJOnReachStart(){
+		StartCoroutine(dialogPlay(7,0.35f));
+	}
+
+	public void dialog06NowLetsStartRaceReady321(){
+		StartCoroutine(dialogPlay(8,0.35f));
+	}
+
+	public void dialog07Go(){
+		StartCoroutine(dialogPlay(9,0.35f));
+	}
+
+	public void dialog08Congra(){
+		StartCoroutine(dialogPlay(10,0.55f));
+	}
+
+	public void dialog09A1st(){
+		StartCoroutine(dialogPlay(11,0.6f));
+	}
+
+	public void dialog09B2nd(){
+		StartCoroutine(dialogPlay(12,0.6f));
+	}
+
+	public void dialog09C3rd(){
+		StartCoroutine(dialogPlay(13,0.6f));
+	}
+
+	IEnumerator dialogPlay(int dialogNum,float dialogVol){
+		while (fellowDialog.isPlaying) {
+			yield return new WaitForSeconds (Time.deltaTime);
+		}
+		fellowDialog.clip = dialogTutorial [dialogNum];
+		fellowDialog.volume = dialogVol;
+		fellowDialog.Play ();
+		Debug.Log (fellowDialog.clip);
+		yield return null;
+	}
 
 
 
