@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	float initialTime;
 	float normalSpeed;
 
-	bool playerInControl = true;
+	bool playerInControl = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -90,6 +90,13 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	public void GuideDoneTalking () {
+		Invoke ("GiveControlBack", 1f);
+	}
+
+	void GiveControlBack () {
+		playerInControl = true;
+	}
 	
 	public void RaceStart () {
 		speed = 8f;

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	public Image fadeToBlack;
 	public GameObject player;
+	public GameObject guide;
 	public GameObject startPos;	
 	public GameObject endPos;
 	public GameObject ovrCam;
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator RaceStartSeq () {
 		Debug.Log ("Race start sequence");
+		guide.GetComponent<FairyGuideController> ().DeactivateGuide ();
+
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
@@ -58,11 +61,11 @@ public class GameManager : MonoBehaviour {
 		foreach(GameObject fairy in aiFairies){
 			fairy.GetComponent<RaceFairyAI>().enabled = true;
 		}
-		player.GetComponent<PlayerController> ().RaceStart ();
 		soundManager.dialog07Go ();
 
 		yield return new WaitForSeconds (9f);
-		soundManager.raceThemeStart ();
+		soundManager.raceThemeStart ();		
+		player.GetComponent<PlayerController> ().RaceStart ();
 	}
 
 	public void RaceEnd (int position) {
