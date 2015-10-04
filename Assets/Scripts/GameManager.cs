@@ -7,16 +7,20 @@ public class GameManager : MonoBehaviour {
 	public Image fadeToBlack;
 	public GameObject player;
 	public GameObject startPos;
+	public GameObject endPos;
 	public GameObject ovrCam;
-	
+	public Canvas gameOverText;
+
+	int endPosition;
+
 	// Use this for initialization
 	void Start () {
-	
+			
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public void RaceStart () {
@@ -34,7 +38,6 @@ public class GameManager : MonoBehaviour {
 		// move player to start and face the treehouse
 		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		player.transform.position = startPos.transform.position;
-		Debug.Log (player.transform.position);
 		player.transform.forward = Vector3.forward;
 		ovrCam.transform.rotation = Quaternion.identity;
 		yield return new WaitForSeconds (0.5f);
@@ -49,23 +52,32 @@ public class GameManager : MonoBehaviour {
 		// play fairies talking and ready, 3 2 1 audio
 
 		// play GO! audio
-
+		GameObject[] aiFairies = GameObject.FindGameObjectsWithTag("RaceFairy");
+		foreach(GameObject fairy in aiFairies){
+			fairy.GetComponent<RaceFairyAI>().enabled = true;
+		}
 		player.GetComponent<PlayerController> ().RaceStart ();
 	}
 
-	public void RaceEnd () {
+	public void RaceEnd (int position) {
+		Debug.Log ("Ending Game");
 		StopAllCoroutines();
-		StartCoroutine("RaceEnd");
+		endPosition = position;
+		StartCoroutine("RaceEndSeq");
 	}
 
 	IEnumerator RaceEndSeq () {
-		Debug.Log ("Race end sequence");
+	
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
 
-		// move player to end spot
+		player.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+		player.transform.position = endPos.transform.position;
+		gameOverText.enabled = true;
+		Text txt = GameObject.FindGameObjectWithTag ("GameOverText");
+		txt.text += endPosition;
 
 		while (fadeToBlack.color.a > 0.05f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
