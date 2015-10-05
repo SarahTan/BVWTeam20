@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForEndOfFrame();
 		}
 
-		yield return new WaitForSeconds (3f);
+		yield return new WaitForSeconds (0.5f);
 
 		if (endPosition <= 3) {
 			soundManager.endWin ();
