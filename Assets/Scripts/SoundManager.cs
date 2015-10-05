@@ -226,15 +226,15 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void dialog09A1st(){
-		StartCoroutine(dialogPlay(11,0.6f));
+		StartCoroutine(dialogPlay(11,0.8f));
 	}
 
 	public void dialog09B2nd(){
-		StartCoroutine(dialogPlay(12,0.6f));
+		StartCoroutine(dialogPlay(12,0.8f));
 	}
 
 	public void dialog09C3rd(){
-		StartCoroutine(dialogPlay(13,0.6f));
+		StartCoroutine(dialogPlay(13,0.8f));
 	}
 
 	IEnumerator dialogPlay(int dialogNum,float dialogVol){
