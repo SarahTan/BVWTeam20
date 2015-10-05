@@ -22,18 +22,12 @@ public class SetDirection : MonoBehaviour {
 
 	void OnTriggerStay (Collider other) {
 		if(other.gameObject.tag == "UpTrigger") {
-			if(!up) {
-				Debug.Log("Going up");
-			}
 			up = true;
 		}
 	}
 	
 	void OnTriggerExit (Collider other) {
 		if(other.gameObject.tag == "UpTrigger") {
-			if(up) {
-				Debug.Log("Going down");
-			}
 			up = false;
 		}
 	}

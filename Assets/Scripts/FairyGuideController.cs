@@ -43,6 +43,7 @@ public class FairyGuideController : MonoBehaviour {
 		while (!guideComplete) {
 			if (Vector3.Distance (player.transform.position, transform.position) > separationThreshold &&
 			   		player.transform.position.z < transform.position.z) {
+				Debug.Log("Waiting");
 				currentVel = rb.velocity;
 				rb.velocity = Vector3.zero;
 				fairydust.SetActive (false);

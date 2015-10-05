@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 	bool tutorialDone = false;
 	bool playerInControl = false;
 	bool celloPlaying = false;
+	bool atHeightLimit = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour {
 				}
 			} else {
 				rb.velocity = Vector3.MoveTowards (oldVel, newVel, speed * Time.deltaTime) * speed;
+				if (atHeightLimit && newVel.y > 0) {
+					newVel.y = 0f;
+				}
 				if (rb.velocity.y < 0 && celloPlaying) {
 					soundManager.FallingMusicStart();
 					celloPlaying = false;
@@ -60,7 +64,9 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.layer == 9) {
-			StartCoroutine("BounceBack");
+			StartCoroutine ("BounceBack");
+		} else if (collision.gameObject.tag == "Ceiling") {
+			atHeightLimit = true;
 		}
 	}
 
@@ -75,6 +81,14 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionExit (Collision collision) {
+		if (collision.gameObject.tag == "Ceiling") {
+			atHeightLimit = false;
+		} else if (collision.gameObject.name == "Terrain") {
+			onGround = false;
+		}
+	}
+
 	IEnumerator BounceBack () {
 		playerInControl = false;
 		soundManager.SFXCrash();
@@ -86,12 +100,6 @@ public class PlayerController : MonoBehaviour {
 		playerInControl = true;
 		rb.velocity = currentVel;
 
-	}
-
-	void OnCollisionExit (Collision collision) {
-		if (collision.gameObject.name == "Terrain") {
-			onGround = false;
-		}
 	}
 
 	void OnTriggerEnter (Collider other) {
