@@ -85,8 +85,7 @@ public class FairyGuideController : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.name == "Terrain") {
-
-			animator.SetBool ("isFlying", false);
+			animator.SetBool ("startFlying", false);
 
 			rb.velocity = Vector3.zero;
 			guideComplete = true;
@@ -96,7 +95,8 @@ public class FairyGuideController : MonoBehaviour {
 	}
 
 	IEnumerator TakeOff () {
-		yield return new WaitForSeconds (1.5f);
+		animator.SetTrigger ("waveHand");
+		yield return new WaitForSeconds (1.9f);
 		soundManager.dialog01AHello ();
 		yield return new WaitForSeconds(4f);
 		
@@ -109,17 +109,17 @@ public class FairyGuideController : MonoBehaviour {
 		//soundManager.dialog02LetsGo2SP ();
 		soundManager.dialog03AUseDandelion2Fly ();
 
-		animator.SetBool("startFlying", true);		
-		player.GetComponent<PlayerController> ().GuideDoneTalking ();
-		while (fairy.transform.rotation.eulerAngles.y < 358) {
-			if (animator.GetCurrentAnimatorStateInfo (0).IsName("flying")) {
-				fairy.transform.rotation = Quaternion.Lerp (fairy.transform.rotation,
-				                                            Quaternion.identity, 1.5f*Time.deltaTime);
-			}
+		animator.SetBool("startFlying", true);
+		while (!animator.GetCurrentAnimatorStateInfo(0).IsName("fly up")) {
 			yield return new WaitForEndOfFrame();
 		}
-		
 		player.GetComponent<PlayerController> ().GuideDoneTalking ();
+		while (fairy.transform.rotation.eulerAngles.y < 358) {
+			fairy.transform.rotation = Quaternion.Lerp (fairy.transform.rotation,
+				                                        Quaternion.identity, 1.5f*Time.deltaTime);
+			yield return new WaitForEndOfFrame();
+		}
+
 		rb.velocity = (turnRightTrigger.transform.position - transform.position).normalized * speed;
 		fairydust.SetActive (true);
 
