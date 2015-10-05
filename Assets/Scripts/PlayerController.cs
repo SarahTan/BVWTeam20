@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	float normalSpeed;
 	bool tutorialDone = false;
 	bool playerInControl = false;
+	bool celloPlaying = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -33,11 +34,19 @@ public class PlayerController : MonoBehaviour {
 					rb.velocity = Vector3.zero;
 				} else {
 					// play take off anim
-
+					soundManager.RisingMusicStart();
+					celloPlaying = true;
 					rb.velocity = newVel * speed;
 				}
 			} else {
 				rb.velocity = Vector3.MoveTowards (oldVel, newVel, speed * Time.deltaTime) * speed;
+				if (rb.velocity.y < 0 && celloPlaying) {
+					soundManager.FallingMusicStart();
+					celloPlaying = false;
+				} else if (rb.velocity.y > 0 && !celloPlaying) {
+					soundManager.RisingMusicStart();
+					celloPlaying = true;
+				}
 			}
 		}
 	}
@@ -49,11 +58,13 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionStay (Collision collision) {
+	void OnCollisionEnter (Collision collision) {
 		if (collision.gameObject.layer == 9) {
 			StartCoroutine("BounceBack");
 		}
+	}
 
+	void OnCollisionStay (Collision collision) {
 		if (Time.time > initialTime + transitionTime) {
 			if (collision.gameObject.name == "Terrain") {
 				onGround = true;
@@ -103,7 +114,7 @@ public class PlayerController : MonoBehaviour {
 		
 		} else if (other.gameObject.name == "rockFallTrigger") {
 			other.gameObject.GetComponentInParent<Animator>().SetTrigger("rockFall");
-			// play sound
+			soundManager.SFXRockFall();
 		}
 	}
 
