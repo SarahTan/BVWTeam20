@@ -51,9 +51,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionStay (Collision collision) {
 		if (collision.gameObject.layer == 9) {
-			// play crashing sound
-			Debug.Log("CRASH!");
-			soundManager.SFXCrash();
+			StartCoroutine("BounceBack");
 		}
 
 		if (Time.time > initialTime + transitionTime) {
@@ -66,6 +64,18 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	IEnumerator BounceBack () {			
+		Debug.Log("CRASH!");
+
+		soundManager.SFXCrash();
+		Vector3 currentVel = rb.velocity;
+		rb.velocity = new Vector3 (rb.velocity.x, rb.velocity.y, -rb.velocity.z+speed);
+		yield return new WaitForSeconds (1f);
+
+		rb.velocity = currentVel;
+
+	}
+
 	void OnCollisionExit (Collision collision) {
 		if (collision.gameObject.name == "Terrain") {
 			onGround = false;
@@ -74,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 		if (other.gameObject.name == "spiderweb trigger" && speed == normalSpeed) {
-			Debug.Log("Spiderweb! slowing down from " + speed);
+			Debug.Log ("Spiderweb! slowing down from " + speed);
 			normalSpeed = speed;
 			speed /= 2f;
 			// play sound which lasts 2-3s
@@ -83,13 +93,17 @@ public class PlayerController : MonoBehaviour {
 		} else if (other.gameObject.name == "StartCollider" && !tutorialDone) {
 			playerInControl = false;
 			tutorialDone = true;
-			gameManager.RaceStart();
+			gameManager.RaceStart ();
 			rb.velocity = (startPos.position - transform.position).normalized * speed;
 
 		} else if (other.gameObject.name == "Endgame Collider") {
-			int position = 5 - GameObject.FindGameObjectsWithTag("RaceFairy").Length;
-			gameManager.RaceEnd(position);
+			int position = 5 - GameObject.FindGameObjectsWithTag ("RaceFairy").Length;
+			gameManager.RaceEnd (position);
 			playerInControl = false;
+		
+		} else if (other.gameObject.name == "rockFallTrigger") {
+			other.gameObject.GetComponentInParent<Animator>().SetTrigger("rockFall");
+			// play sound
 		}
 	}
 
