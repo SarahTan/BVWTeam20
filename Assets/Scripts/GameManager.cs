@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour {
 	float timeTaken;
 
 	// Use this for initialization
-	void Start () {
+	void Start () { 
+		timeTaken = 0f;
 		StartCoroutine ("LoadSplashScreen");
 	}
 	
@@ -150,5 +151,9 @@ public class GameManager : MonoBehaviour {
 		
 		// play audio/anim
 		//soundManager.dialog08Congra ();
+	}
+
+	public float getTimeTaken(){
+		return timeTaken;
 	}
 }
