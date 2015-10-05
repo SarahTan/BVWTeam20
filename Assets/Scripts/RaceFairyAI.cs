@@ -16,9 +16,18 @@ public class RaceFairyAI : MonoBehaviour {
 		//Time.timeScale = 5;
 		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
-		animator.SetBool ("isFlying", true);
-		rb.velocity = originalVelocity;
+		Invoke ("startTakeOff", 7);
 		inCollision = false;
+	}
+
+	void startTakeOff(){
+		animator.Play ("take off");
+		Invoke ("initiateFlight", 2);
+	}
+
+	void initiateFlight(){
+		rb.velocity = originalVelocity;
+		animator.Play ("flying");
 	}
 
 	void OnCollisionEnter (Collision collision) {

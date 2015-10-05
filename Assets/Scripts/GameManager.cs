@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour {
 	float timeTaken;
 
 	// Use this for initialization
-	void Start () {
+	void Start () { 
+		timeTaken = 0f;
 		StartCoroutine ("LoadSplashScreen");
 	}
 	
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator LoadSplashScreen () {
+
 		soundManager.titleMusicStart ();
 		yield return new WaitForSeconds(5f);
 		while (fadeToBlack.color.a < 0.95f) {
@@ -84,12 +86,11 @@ public class GameManager : MonoBehaviour {
 		soundManager.dialog05GJOnReachStart ();
 		soundManager.dialog06NowLetsStartRaceReady321 ();
 		soundManager.dialog07Go ();
-		yield return new WaitForSeconds (9f);
-
 		GameObject[] aiFairies = GameObject.FindGameObjectsWithTag("RaceFairy");
 		foreach(GameObject fairy in aiFairies){
 			fairy.GetComponent<RaceFairyAI>().enabled = true;
 		}
+		yield return new WaitForSeconds (9f);
 		soundManager.raceThemeStart ();		
 		player.GetComponent<PlayerController> ().RaceStart ();
 		raceStartTime = Time.time;
@@ -127,7 +128,7 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForEndOfFrame();
 		}
 
-		yield return new WaitForSeconds (0.5f);
+		yield return new WaitForSeconds (3f);
 
 		if (endPosition <= 3) {
 			soundManager.endWin ();
@@ -149,5 +150,9 @@ public class GameManager : MonoBehaviour {
 		
 		// play audio/anim
 		//soundManager.dialog08Congra ();
+	}
+
+	public float getTimeTaken(){
+		return timeTaken;
 	}
 }
