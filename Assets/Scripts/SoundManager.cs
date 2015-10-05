@@ -21,6 +21,7 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip bgmEndingWin;
 	public AudioClip bgmEndingLose;
 	public AudioClip sfxReach;
+	public AudioClip sfxFirework;
 
 	public AudioClip[] dialogTutorial;
 
@@ -50,6 +51,7 @@ public class SoundManager : MonoBehaviour {
 		if (Input.GetKeyDown ("e"))	raceThemeStop ();
 		if (Input.GetKeyDown ("c"))	SFXCrash ();
 		if (Input.GetKeyDown ("x"))	SFXCoin ();
+		if (Input.GetKeyDown ("f"))	SFXFirework ();
 
 		if (Input.GetKeyDown ("w"))	endWin ();
 		if (Input.GetKeyDown ("l"))	endLose ();
@@ -161,6 +163,10 @@ public class SoundManager : MonoBehaviour {
 		sfxCoin.Play ();
 	}
 
+	public void SFXFirework(){
+		AudioPlay (sfxFirework, 1f, 1f);
+	}
+
 	//Dialogs
 	public void dialog01AHello(){
 		StartCoroutine(dialogPlay(0,0.35f));
@@ -248,6 +254,21 @@ public class SoundManager : MonoBehaviour {
 		source.Play ();
 		Destroy (go, clip.length);
 		return source;
+	}
+
+	void AudioPlay(AudioClip clip, float volume, float pitch){
+		GameObject go = new GameObject ("Audio: " + clip.name);
+		GameObject SM;
+		SM = GameObject.Find ("SoundManager");
+		go.transform.parent = SM.transform;
+		
+		//Create the source
+		AudioSource source = go.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.volume = volume;
+		source.pitch = pitch;
+		source.Play ();
+		Destroy (go, clip.length);
 	}
 
 	void RisingMusicStop(){
