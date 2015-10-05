@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	public SoundManager soundManager;
 	public RawImage splashScreen;
 	public FairyGuideController guideFairy;
+	public GameObject fireworks;
 
 	private int numoftimes;
 	public Material treehouseMat;
@@ -132,7 +133,7 @@ public class GameManager : MonoBehaviour {
 		} else {
 			soundManager.endLose();
 		}
-
+		fireworks.SetActive (true);
 		if(endPosition == 1) {
 			soundManager.dialog08Congra ();
 			soundManager.dialog09A1st ();
