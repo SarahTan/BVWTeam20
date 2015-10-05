@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour {
 			soundManager.endLose();
 		}
 		fireworks.SetActive (true);
+
 		if(endPosition == 1) {
 			soundManager.dialog08Congra ();
 			soundManager.dialog09A1st ();
@@ -147,6 +148,8 @@ public class GameManager : MonoBehaviour {
 			soundManager.dialog08Congra ();
 			soundManager.dialog09C3rd();
 		}
+
+		soundManager.SFXFirework ();
 		
 		// play audio/anim
 		//soundManager.dialog08Congra ();

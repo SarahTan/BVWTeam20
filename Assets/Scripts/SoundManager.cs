@@ -280,8 +280,9 @@ public class SoundManager : MonoBehaviour {
 		source.clip = clip;
 		source.volume = volume;
 		source.pitch = pitch;
+		source.loop = true;
 		source.Play ();
-		Destroy (go, clip.length);
+//		Destroy (go, clip.length);
 	}
 
 	void RisingMusicStop(){
