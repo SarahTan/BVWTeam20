@@ -42,6 +42,11 @@ public class RaceFairyAI : MonoBehaviour {
 		if (inCollision) {
 			return;
 		}
+		if (collisionVector.x > 0) {
+			animator.Play ("fly right");
+		} else {
+			animator.Play ("fly left");
+		}
 		inCollision = true;
 		rb.velocity = collisionVector;
 		Invoke ("restoreOriginalVelocity", timeLagAfterCollision);
@@ -57,6 +62,7 @@ public class RaceFairyAI : MonoBehaviour {
 	void restoreOriginalVelocity(){
 		if (!inCollision) {
 			rb.velocity = originalVelocity;
+			animator.Play ("flying");
 		} else {
 			rb.velocity = collisionVector;
 			Invoke ("restoreOriginalVelocity", timeLagAfterCollision);
