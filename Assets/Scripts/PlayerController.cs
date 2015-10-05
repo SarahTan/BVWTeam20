@@ -75,14 +75,15 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator BounceBack () {			
-		Debug.Log("CRASH!");
-
+	IEnumerator BounceBack () {
+		playerInControl = false;
 		soundManager.SFXCrash();
 		Vector3 currentVel = rb.velocity;
-		rb.velocity = new Vector3 (rb.velocity.x, rb.velocity.y, -rb.velocity.z+speed);
-		yield return new WaitForSeconds (1f);
+		rb.velocity = new Vector3 (rb.velocity.x, rb.velocity.y, -(rb.velocity.z+speed));
+		Debug.Log (rb.velocity);
+		yield return new WaitForSeconds (0.5f);
 
+		playerInControl = true;
 		rb.velocity = currentVel;
 
 	}
