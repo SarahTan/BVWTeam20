@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour {
 		Debug.Log ("Ending Game");
 		StopAllCoroutines();
 		endPosition = position;
+		soundManager.raceThemeStop ();
 		StartCoroutine("RaceEndSeq");
 	}
 
@@ -124,7 +125,6 @@ public class GameManager : MonoBehaviour {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
-		soundManager.raceThemeStop ();
 
 		yield return new WaitForSeconds (3f);
 
