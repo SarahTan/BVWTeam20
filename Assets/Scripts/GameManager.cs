@@ -122,8 +122,16 @@ public class GameManager : MonoBehaviour {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
+		soundManager.raceThemeStop ();
 
 		yield return new WaitForSeconds (3f);
+
+		if (endPosition <= 3) {
+			soundManager.endWin ();
+		} else {
+			soundManager.endLose();
+		}
+
 		if(endPosition == 1) {
 			soundManager.dialog08Congra ();
 			soundManager.dialog09A1st ();
