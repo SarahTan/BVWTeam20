@@ -157,7 +157,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void SFXCoin(){
-		sfxCoin.volume = 0.7f;
+		sfxCoin.volume = 0.4f;
 		sfxCoin.Play ();
 	}
 
