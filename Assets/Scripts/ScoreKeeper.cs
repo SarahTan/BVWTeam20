@@ -6,7 +6,9 @@ public class ScoreKeeper : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		speedline.SetActive (false);
+		//speedline.SetActive (false);
+		speedline.transform.GetChild (0).GetComponent<ParticleSystem> ().startSpeed = 7;
+		speedline.transform.GetChild (0).GetComponent<ParticleSystem> ().maxParticles = 5;
 	}
 	
 	// Update is called once per frame
@@ -22,9 +24,12 @@ public class ScoreKeeper : MonoBehaviour {
 	}
 	IEnumerator Speedup()
 	{
-		speedline.SetActive (true);
+		speedline.transform.GetChild (0).GetComponent<ParticleSystem> ().startSpeed = 200;
+		speedline.transform.GetChild (0).GetComponent<ParticleSystem> ().maxParticles = 20;
 		yield return new WaitForSeconds(2);
-		speedline.SetActive (false);
+		speedline.transform.GetChild (0).GetComponent<ParticleSystem> ().startSpeed = 7;
+		speedline.transform.GetChild (0).GetComponent<ParticleSystem> ().maxParticles = 5;
+
 	}
 
 }
