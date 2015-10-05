@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour {
 
 	bool isRising = false;
 	bool isFalling = false;
+	bool hasFallen = false;
 
 
 	//test
@@ -172,8 +173,11 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void SFXRockFall(){
-		sfxRockFall.volume = 1f;
-		sfxRockFall.Play ();
+		if (!hasFallen) {
+			sfxRockFall.volume = 1f;
+			sfxRockFall.Play ();
+			hasFallen = true;
+		}
 	}
 
 	//Dialogs
