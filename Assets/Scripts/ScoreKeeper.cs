@@ -13,16 +13,8 @@ public class ScoreKeeper : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (gameObject.GetComponent<Rigidbody> ().velocity.z > 0.1) {
-			var rot = speedline.transform.rotation;
-			rot.y = 0;
-			speedline.transform.GetChild (0).transform.rotation = rot;
 			speedline.SetActive (true);
-			speedline.SetActive (true);
-		} else if (gameObject.GetComponent<Rigidbody> ().velocity.z < -0.1) {
-			var rot = speedline.transform.rotation;
-			rot.y = 0;
-			speedline.transform.GetChild (0).transform.rotation = rot;
-			speedline.SetActive (false);
+		
 		} else 
 			speedline.SetActive (false);
 	}
