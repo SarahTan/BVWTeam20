@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator LoadSplashScreen () {
+
+		soundManager.titleMusicStart ();
 		yield return new WaitForSeconds(5f);
 		while (fadeToBlack.color.a < 0.95f) {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour {
 		Debug.Log ("Ending Game");
 		StopAllCoroutines();
 		endPosition = position;
+		soundManager.raceThemeStop ();
 		StartCoroutine("RaceEndSeq");
 	}
 
@@ -124,7 +127,6 @@ public class GameManager : MonoBehaviour {
 			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.5f*Time.deltaTime);
 			yield return new WaitForEndOfFrame();
 		}
-		soundManager.raceThemeStop ();
 
 		yield return new WaitForSeconds (3f);
 

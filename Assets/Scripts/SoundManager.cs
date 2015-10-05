@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource sfxCrash;
 	public AudioSource sfxWaterfall;
 	public AudioSource sfxCoin;
+	public AudioSource sfxRockFall;
 
 
 	public AudioClip bgmRace;
@@ -52,6 +53,7 @@ public class SoundManager : MonoBehaviour {
 		if (Input.GetKeyDown ("c"))	SFXCrash ();
 		if (Input.GetKeyDown ("x"))	SFXCoin ();
 		if (Input.GetKeyDown ("f"))	SFXFirework ();
+		if (Input.GetKeyDown ("t"))	SFXRockFall ();
 
 		if (Input.GetKeyDown ("w"))	endWin ();
 		if (Input.GetKeyDown ("l"))	endLose ();
@@ -165,6 +167,11 @@ public class SoundManager : MonoBehaviour {
 
 	public void SFXFirework(){
 		AudioPlay (sfxFirework, 1f, 1f);
+	}
+
+	public void SFXRockFall(){
+		sfxRockFall.volume = 1f;
+		sfxRockFall.Play ();
 	}
 
 	//Dialogs
