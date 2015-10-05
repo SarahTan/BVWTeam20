@@ -156,8 +156,10 @@ public class SoundManager : MonoBehaviour {
 
 	//sfx
 	public void SFXCrash (){
-		sfxCrash.volume = 1f;
-		sfxCrash.Play ();
+		if (!sfxCoin.isPlaying) {
+			sfxCrash.volume = 1f;
+			sfxCrash.Play ();
+		}
 	}
 
 	public void SFXCoin(){
