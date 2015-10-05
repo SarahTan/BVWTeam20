@@ -25,16 +25,16 @@ public class FairyGuideController : MonoBehaviour {
 		animator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
 
-
-		StartCoroutine ("TakeOff");
-		StartCoroutine ("WaitForPlayer");
 		fairydust = gameObject.transform.GetChild (1).gameObject;
 		fairydust.SetActive (false);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {		
+	}
 
+	public void ActivateGuide () {
+		StartCoroutine ("TakeOff");
 	}
 
 	IEnumerator WaitForPlayer () {
@@ -96,7 +96,7 @@ public class FairyGuideController : MonoBehaviour {
 	}
 
 	IEnumerator TakeOff () {
-		yield return new WaitForSeconds (2.5f);
+		yield return new WaitForSeconds (1.5f);
 		soundManager.dialog01AHello ();
 		yield return new WaitForSeconds(4f);
 		
@@ -108,11 +108,6 @@ public class FairyGuideController : MonoBehaviour {
 		
 		//soundManager.dialog02LetsGo2SP ();
 		soundManager.dialog03AUseDandelion2Fly ();
-
-//		animator.SetTrigger ("turnAround");
-//		while (!animator.GetCurrentAnimatorStateInfo (0).IsName("turn around")) {
-//			yield return new WaitForEndOfFrame();
-//		}
 
 		animator.SetBool("startFlying", true);		
 		player.GetComponent<PlayerController> ().GuideDoneTalking ();
@@ -127,6 +122,8 @@ public class FairyGuideController : MonoBehaviour {
 		player.GetComponent<PlayerController> ().GuideDoneTalking ();
 		rb.velocity = (turnRightTrigger.transform.position - transform.position).normalized * speed;
 		fairydust.SetActive (true);
+
+		StartCoroutine ("WaitForPlayer");
 	}
 
 	public void DeactivateGuide () {

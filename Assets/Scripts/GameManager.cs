@@ -11,9 +11,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject endPos;
 	public GameObject ovrCam;
 	public SoundManager soundManager;
+	public RawImage splashScreen;
+	public FairyGuideController guideFairy;
+
 	private int numoftimes;
-	Shader shader1;
-	Shader shader2;
 	public Material treehouseMat;
 	public Material treeMat;
 
@@ -23,10 +24,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		soundManager.mainThemeStart ();
-		numoftimes = 0;
-		shader1 = Shader.Find("Diffuse");
-		shader2 = Shader.Find("Self-Illumin/Diffuse");
+		StartCoroutine ("LoadSplashScreen");
 	}
 	
 	// Update is called once per frame
@@ -34,21 +32,24 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	IEnumerator LoadSplashScreen () {
+		yield return new WaitForSeconds(5f);
+		while (fadeToBlack.color.a < 0.95f) {
+			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.black, 1.5f*Time.deltaTime);
+			yield return new WaitForEndOfFrame();
+		}
+		splashScreen.color = Color.clear;		
+		soundManager.mainThemeStart ();
+		while (fadeToBlack.color.a > 0.05f) {
+			fadeToBlack.color = Color.Lerp (fadeToBlack.color, Color.clear, 1.3f*Time.deltaTime);
+			yield return new WaitForEndOfFrame();
+		}
+		guideFairy.ActivateGuide ();
+	}
+
 	public void RaceStart () {
 		StopAllCoroutines ();
 		StartCoroutine ("RaceStartSeq");
-	}
-	public void Flash()
-	{
-		Debug.Log ("here");
-		if (numoftimes % 2 == 0) {
-			treehouseMat.shader = shader1;
-			treeMat.shader = shader1;
-		} else {
-			treeMat.shader = shader2;
-			treehouseMat.shader = shader2;
-		}
-		numoftimes++;
 	}
 
 	IEnumerator RaceStartSeq () {
