@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator LoadSplashScreen () {
+
 		soundManager.titleMusicStart ();
 		yield return new WaitForSeconds(5f);
 		while (fadeToBlack.color.a < 0.95f) {
