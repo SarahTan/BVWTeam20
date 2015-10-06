@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	bool playerInControl = false;
 	bool celloPlaying = false;
 	bool atHeightLimit = false;
+	bool isEndGameTriggered = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -103,6 +104,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
+		if (isEndGameTriggered) {
+			return;
+		}
 		if (other.gameObject.name == "spiderweb trigger" && speed == normalSpeed) {
 			Debug.Log ("Spiderweb! slowing down from " + speed);
 			normalSpeed = speed;
@@ -118,9 +122,9 @@ public class PlayerController : MonoBehaviour {
 
 		} else if (other.gameObject.name == "Endgame Collider") {
 			int position = 5 - GameObject.FindGameObjectsWithTag ("RaceFairy").Length;
+			isEndGameTriggered = true;
 			gameManager.RaceEnd (position);
 			playerInControl = false;
-		
 		} else if (other.gameObject.name == "rockFallTrigger") {
 			other.gameObject.GetComponentInParent<Animator>().SetTrigger("rockFall");
 			soundManager.SFXRockFall();
